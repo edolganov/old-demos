@@ -1,0 +1,82 @@
+<project name="Module build" default="deploy" basedir=".">
+    <property file="build.properties"/>
+	
+	<target name="build-dependencies">
+		<ant antfile="${project.path.core}/build.xml" inheritAll="false" />
+	</target>
+	
+	
+	<target name="assemble-app">
+		<mkdir dir="${app.dist.dir}"/>
+		<mkdir dir="${app.dist.dir.lib}"/>
+		<mkdir dir="${app.dist.dir.lib}/thirdparty"/>
+		
+		
+		<!-- third-party -->
+		<!-- <copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/swingx-1.6.jar"/> -->
+		
+		<!-- lib -->
+		<copy todir="${app.dist.dir.lib}">
+			<fileset dir="${module.dist.dir}" includes="*.jar"/>
+			<fileset dir="${project.path.core}/build" includes="*.jar"/>
+        </copy>
+		
+		<copy todir="${app.dist.dir}">
+			<fileset dir="./app-files" includes="*"/>
+		</copy>
+	</target>
+	
+
+	
+	
+	
+	
+	
+
+    <target name="init" description="Build initialization">
+        <path id="libs">
+            <fileset dir="${module.third-party.dir}" includes="${module.third-party.lib}"/>
+            <fileset dir="${project.path.core}/build" includes="*.jar"/>
+        </path>
+    </target>
+
+
+    <target name="clean" depends="init">
+        <delete dir="${build.dir}"/>
+    </target>
+
+	<target name="compile" depends="clean">
+	    <mkdir dir="${module.build.dir}"/>
+
+        <javac srcdir="${module.src.dir}"
+               destdir="${module.build.dir}"
+               debug="${compiler.debug}"
+               optimize="${compiler.optimize}"
+               deprecation="${compiler.deprecation}"
+               encoding="${compiler.encoding}">
+            <classpath refid="libs"/>
+        </javac>
+
+        <copy todir="${module.build.dir}">
+            <fileset dir="${module.src.dir}">
+                <include name="**/*"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+
+        <jar jarfile="${module.dist.dir}/${module.name}">
+            <fileset dir="${module.build.dir}"/>
+        </jar>	
+	</target>
+	
+
+	<target name="deploy" depends="build-dependencies,compile, assemble-app"/>
+	
+	<target name="run" depends="deploy">
+		<exec executable="cmd" dir="${app.dist.dir}" spawn="true">
+			<arg value="/c"/>
+			<arg value="run-with-console.bat"/>
+		</exec>
+	</target>
+</project>
+

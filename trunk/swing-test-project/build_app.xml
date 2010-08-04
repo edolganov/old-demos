@@ -1,0 +1,27 @@
+<project name="Module build" default="deploy" basedir=".">
+	
+	<target name="build-dependencies">
+		<ant antfile="app/build.xml" inheritAll="false" />
+	</target>
+	
+	
+	<target name="assemble-app">
+		<delete dir="build-app"/>
+		<mkdir dir="build-app/swing-app"/>
+		
+		<copy todir="build-app/swing-app">
+			<fileset dir="app/build/swing-app"/>
+		</copy>
+	</target>
+
+	
+
+	<target name="deploy" depends="build-dependencies, assemble-app"/>
+	
+	<target name="run" depends="deploy">
+		<exec executable="cmd" dir="build-app/swing-app" spawn="true">
+			<arg value="/c"/>
+			<arg value="run-with-console.bat"/>
+		</exec>
+	</target>
+</project>
