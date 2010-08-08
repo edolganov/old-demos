@@ -1,4 +1,4 @@
-package ru.test.swing.core.test;
+package tatia.swing.core.test;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

@@ -1,9 +1,9 @@
-package ru.test.app;
+package tatia.app;
 
 import javax.swing.JTree;
 
-import ru.test.swing.core.test.TestFrame;
-import ru.test.swing.util.laf.Laf;
+import tatia.swing.core.test.TestFrame;
+import tatia.swing.util.laf.Laf;
 
 public class Main {
 	

@@ -1,2 +1,2 @@
-start java  -cp lib/*;lib/thirdparty/* ru.test.app.Main
+start java  -cp lib/*;lib/thirdparty/* tatia.app.Main
 exit

@@ -1,4 +1,4 @@
-package ru.test.swing.util.laf;
+package tatia.swing.util.laf;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;

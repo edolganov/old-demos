@@ -1,2 +1,2 @@
-start javaw -cp lib/*;lib/thirdparty/* ru.test.app.Main
+start javaw -cp lib/*;lib/thirdparty/* tatia.app.Main
 exit
