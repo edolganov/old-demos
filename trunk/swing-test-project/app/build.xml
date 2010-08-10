@@ -13,8 +13,18 @@
 		
 		
 		<!-- third-party -->
-		<!-- <copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/swingx-1.6.jar"/> -->
-		
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/commons-logging.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/dom4j-1.6.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/google-collections-1.0.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/gson-1.4.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/javassist-3.8.0.GA.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/logback-classic-0.9.9.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/logback-core-0.9.9.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/reflections-0.9.5-RC2.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/servlet-api-2.5.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/slf4j-api-1.5.6.jar"/>
+		<copy todir="${app.dist.dir.lib}/thirdparty" file="${module.third-party.dir}/xml-apis-1.0.b2.jar"/>
+
 		<!-- lib -->
 		<copy todir="${app.dist.dir.lib}">
 			<fileset dir="${module.dist.dir}" includes="*.jar"/>
