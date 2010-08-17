@@ -36,20 +36,12 @@
 		</copy>
 	</target>
 	
-
-	
-	
-	
-	
-	
-
     <target name="init" description="Build initialization">
         <path id="libs">
             <fileset dir="${module.third-party.dir}" includes="${module.third-party.lib}"/>
             <fileset dir="${project.path.core}/build" includes="*.jar"/>
         </path>
     </target>
-
 
     <target name="clean" depends="init">
         <delete dir="${build.dir}"/>
