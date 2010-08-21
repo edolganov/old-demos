@@ -8,6 +8,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Laf.setNimbusLaf();
+		Laf.setupEnterActionForAllButtons();
 		
 		new App().init();
 	}
