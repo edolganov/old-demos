@@ -1,6 +1,6 @@
 package com.spaceage.app;
 
-import com.spaceage.core.ui.render.SceneRender;
+import com.spaceage.core.ui.SceneRender;
 
 public class App {
 	

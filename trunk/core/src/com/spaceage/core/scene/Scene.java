@@ -2,9 +2,9 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
-import com.spaceage.core.ui.render.SceneUI;
+import com.spaceage.core.ui.SceneImage;
 
-public class Scene implements SceneUI {
+public class Scene implements SceneImage {
 	
 	private static final int BACKGROUNG_COLOR = 0xFFFFFF;
 	
