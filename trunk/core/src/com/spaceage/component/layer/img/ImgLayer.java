@@ -1,4 +1,4 @@
-package com.spaceage.example;
+package com.spaceage.component.layer.img;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
