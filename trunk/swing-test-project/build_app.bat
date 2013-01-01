@@ -1,1 +1,0 @@
-start ant -f build_app.xml
