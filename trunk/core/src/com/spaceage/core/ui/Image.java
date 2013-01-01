@@ -1,6 +1,6 @@
 package com.spaceage.core.ui;
 
-public interface Canvas {
+public interface Image {
 	
 	int width();
 	
