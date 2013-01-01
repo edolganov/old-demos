@@ -1,7 +1,7 @@
 package com.spaceage.app;
 
 import com.spaceage.component.layer.img.ImgLayer;
-import com.spaceage.core.ui.Scene;
+import com.spaceage.core.scene.Scene;
 
 public class Level_01 {
 	

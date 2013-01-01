@@ -1,4 +1,4 @@
-package com.spaceage.core.ui;
+package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
