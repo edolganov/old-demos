@@ -31,7 +31,7 @@ public class ImageImpl implements Image {
 	}
 
 	@Override
-	public int getRGB(int x, int y) {
+	public int getRGBA(int x, int y) {
 		return bufferedImage.getRGB(x, y);
 	}
 	
