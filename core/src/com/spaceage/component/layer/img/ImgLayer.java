@@ -1,16 +1,14 @@
 package com.spaceage.component.layer.img;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.io.InputStream;
 
-import javax.imageio.ImageIO;
-
+import com.spaceage.core.platform.Image;
+import com.spaceage.core.platform.Platform;
 import com.spaceage.core.scene.Layer;
 
 public class ImgLayer extends Layer {
 	
-	BufferedImage img;
+	Image img;
 	int width;
 	int height;
 	
@@ -21,13 +19,9 @@ public class ImgLayer extends Layer {
 	}
 
 
-	private BufferedImage loadImg(String resourcePath) {
+	private Image loadImg(String resourcePath) {
 		InputStream is = getClass().getResourceAsStream(resourcePath);
-		try {
-			return ImageIO.read(is);
-		} catch (IOException e) {
-			throw new IllegalStateException("can't load image", e);
-		}
+		return Platform.factory.createImage(is);
 	}
 	
 

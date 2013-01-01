@@ -2,7 +2,7 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
-import com.spaceage.core.ui.SceneImage;
+import com.spaceage.core.platform.SceneImage;
 
 public class Scene implements SceneImage {
 	

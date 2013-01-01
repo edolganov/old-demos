@@ -1,4 +1,4 @@
-package com.spaceage.core.ui;
+package com.spaceage.core.platform;
 
 public interface SceneRender {
 	

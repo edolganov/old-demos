@@ -3,6 +3,8 @@ package com.spaceage.swing;
 import javax.swing.SwingUtilities;
 
 import com.spaceage.app.App;
+import com.spaceage.core.platform.Platform;
+import com.spaceage.swing.platform.PlatformFactoryImpl;
 
 public class Main {
 	
@@ -12,6 +14,8 @@ public class Main {
 			
 			@Override
 			public void run() {
+				
+				Platform.factory = new PlatformFactoryImpl();
 				
 				App app = new App();
 				
