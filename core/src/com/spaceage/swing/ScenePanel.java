@@ -5,12 +5,12 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.spaceage.core.ui.render.SceneRender;
-import com.spaceage.core.ui.render.SceneUI;
+import com.spaceage.core.ui.SceneRender;
+import com.spaceage.core.ui.SceneImage;
 
 public class ScenePanel extends JPanel implements SceneRender {
 	
-	SceneUI scene;
+	SceneImage scene;
 	int width = 640;
 	int height = 480;
 
@@ -19,7 +19,7 @@ public class ScenePanel extends JPanel implements SceneRender {
 	}
 	
 	@Override
-	public void setScene(SceneUI scene) {
+	public void setScene(SceneImage scene) {
 		this.scene = scene;
 	}
 	
