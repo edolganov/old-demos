@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import com.spaceage.core.ui.Layer;
+import com.spaceage.core.scene.Layer;
 
 public class ImgLayer extends Layer {
 	

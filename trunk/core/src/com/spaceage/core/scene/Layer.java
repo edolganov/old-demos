@@ -1,4 +1,4 @@
-package com.spaceage.core.ui;
+package com.spaceage.core.scene;
 
 public abstract class Layer {
 	
