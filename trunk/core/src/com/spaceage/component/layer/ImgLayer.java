@@ -1,6 +1,4 @@
-package com.spaceage.component.layer.img;
-
-import java.io.InputStream;
+package com.spaceage.component.layer;
 
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.platform.Platform;
@@ -13,15 +11,9 @@ public class ImgLayer extends Layer {
 	int height;
 	
 	public ImgLayer(String resourcePath) {
-		img = loadImg(resourcePath);
+		img = Platform.factory.createImage(resourcePath);
 		width = img.getWidth();
 		height = img.getHeight();
-	}
-
-
-	private Image loadImg(String resourcePath) {
-		InputStream is = getClass().getResourceAsStream(resourcePath);
-		return Platform.factory.createImage(is);
 	}
 	
 
@@ -29,7 +21,7 @@ public class ImgLayer extends Layer {
 	public int getRGBA(int x, int y) {
 		x = x % width;
 		y = y % height;
-		return img.getRGB(x, y);
+		return img.getRGBA(x, y);
 	}
 
 }

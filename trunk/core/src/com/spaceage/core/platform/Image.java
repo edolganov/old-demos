@@ -6,6 +6,6 @@ public interface Image {
 	
 	int getHeight();
 	
-	int getRGB(int x, int y);
+	int getRGBA(int x, int y);
 
 }
