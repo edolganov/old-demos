@@ -6,13 +6,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import com.spaceage.app.App;
 
 public class SwingApp {
 	
-	JFrame window;
+	private static final int DELTA_X = 10;
 	
+	JFrame window;
+	ScenePanel scenePanel;
+	int offsetX;
+	int offsetY;
 	
 	
 	public SwingApp(App app) {
@@ -20,13 +25,15 @@ public class SwingApp {
 		
 		window.setLocation(new Point(480, 240));
 		
-		Dimension size = new Dimension(640, 480);
+		int width = 640;
+		int height = 480;
+		Dimension size = new Dimension(width, height);
 		window.setMinimumSize(size);
 		window.setMaximumSize(size);
 		
 		window.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
-		ScenePanel scenePanel = new ScenePanel();
+		scenePanel = new ScenePanel(this, width, height);
 		app.setRender(scenePanel);
 		window.add(scenePanel);
 		
@@ -42,9 +49,45 @@ public class SwingApp {
 			public void keyPressed(KeyEvent e) {
 				int keyCode = e.getKeyCode();
 				//<- 37, -> 39, up - 38, down - 40
+				if(keyCode == 37){
+					offsetX = offsetX - DELTA_X;
+					if(offsetX < 0){
+						offsetX = 0;
+					} else {
+						repaintReq();
+					}
+				}
+				else if(keyCode == 39){
+					offsetX = offsetX + DELTA_X;
+					repaintReq();
+				}
+				
 			}
 		});
 	}
+	
+	private void repaintReq() {
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				scenePanel.repaint();
+			}
+		});
+		
+	}
+
+	public int getOffsetX() {
+		return offsetX;
+	}
+
+	public int getOffsetY() {
+		return offsetY;
+	}
+
+
+
+
 
 
 	public void start() {

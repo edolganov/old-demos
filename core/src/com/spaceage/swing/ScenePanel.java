@@ -10,12 +10,15 @@ import com.spaceage.core.platform.SceneRender;
 
 public class ScenePanel extends JPanel implements SceneRender {
 	
+	SwingApp owner;
 	SceneImage scene;
-	int width = 640;
-	int height = 480;
+	int width;
+	int height;
 
-	public ScenePanel() {
-		super();
+	public ScenePanel(SwingApp owner, int width, int height) {
+		this.owner = owner;
+		this.width = width;
+		this.height = height;
 	}
 	
 	@Override
@@ -32,9 +35,10 @@ public class ScenePanel extends JPanel implements SceneRender {
 		}
 		
 		for(int x=0; x < width; ++x){
-			for(int y=0; y<height; y++){
-				
-				int rgb = scene.getRGB(x,y);
+			for(int y=0; y < height; y++){
+				int sceneX = x + owner.getOffsetX();
+				int sceneY = y + owner.getOffsetY();
+				int rgb = scene.getRGB(sceneX, sceneY);
 				g.setColor(new Color(rgb));
 				g.drawLine(x, y, x, y);
 				
