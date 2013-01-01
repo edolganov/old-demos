@@ -1,0 +1,38 @@
+    /**
+     * Returns the red component in the range 0-255 in the default sRGB
+     * space.
+     * @return the red component.
+     * @see #getRGB
+     */
+    public int getRed() {
+	return (getRGB() >> 16) & 0xFF;
+    }
+
+    /**
+     * Returns the green component in the range 0-255 in the default sRGB
+     * space.
+     * @return the green component.
+     * @see #getRGB
+     */
+    public int getGreen() {
+	return (getRGB() >> 8) & 0xFF;
+    }
+
+    /**
+     * Returns the blue component in the range 0-255 in the default sRGB
+     * space.
+     * @return the blue component.
+     * @see #getRGB
+     */
+    public int getBlue() {
+	return (getRGB() >> 0) & 0xFF;
+    }
+
+    /**
+     * Returns the alpha component in the range 0-255.
+     * @return the alpha component.
+     * @see #getRGB
+     */
+    public int getAlpha() {
+        return (getRGB() >> 24) & 0xff;
+    }
