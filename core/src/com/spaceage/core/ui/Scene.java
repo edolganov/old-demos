@@ -2,7 +2,7 @@ package com.spaceage.core.ui;
 
 import java.util.ArrayList;
 
-public class World {
+public class Scene {
 	
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
 	
@@ -11,8 +11,14 @@ public class World {
 	}
 	
 	
-	public RGB getRGB(int x, int y){
-		return new RGB(100, 100, 100);
+	public int getRGB(int x, int y){
+		
+		for(int i=0; i < layers.size(); i++){
+			Layer layer = layers.get(i);
+			
+		}
+		
+		return 0xff332244;
 	}
 	
 	

@@ -9,10 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import com.spaceage.core.ui.RGB;
-import com.spaceage.core.ui.World;
+import com.spaceage.core.ui.Scene;
 
-public class WorldPanel extends JPanel {
+public class ScenePanel extends JPanel {
 	
 	public static void main(String[] args) {
 		
@@ -21,8 +20,10 @@ public class WorldPanel extends JPanel {
 			@Override
 			public void run() {
 				
-				World world = new World();
-				WorldPanel panel = new WorldPanel(world);
+				Scene world = new Scene();
+				
+				
+				ScenePanel panel = new ScenePanel(world);
 				
 				JFrame frame = new JFrame("test space-age");
 				frame.setMinimumSize(new Dimension(1024, 768));
@@ -36,12 +37,12 @@ public class WorldPanel extends JPanel {
 		
 	}
 	
-	World world;
+	Scene world;
 	int width = 1024;
 	int height = 768;
 	BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
-	public WorldPanel(World world) {
+	public ScenePanel(Scene world) {
 		super();
 		this.world = world;
 	}
@@ -52,8 +53,8 @@ public class WorldPanel extends JPanel {
 		for(int x=0; x < width; ++x){
 			for(int y=0; y<height; y++){
 				
-				RGB rgb = world.getRGB(x,y);
-				g.setColor(new Color(rgb.r, rgb.g, rgb.b));
+				int rgb = world.getRGB(x,y);
+				g.setColor(new Color(rgb));
 				g.drawLine(x, y, x, y);
 				
 			}
