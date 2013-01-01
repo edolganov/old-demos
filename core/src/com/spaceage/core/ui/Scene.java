@@ -2,7 +2,9 @@ package com.spaceage.core.ui;
 
 import java.util.ArrayList;
 
-public class Scene {
+import com.spaceage.core.ui.render.SceneUI;
+
+public class Scene implements SceneUI {
 	
 	private static final int BACKGROUNG_COLOR = 0xFFFFFF;
 	
@@ -14,6 +16,7 @@ public class Scene {
 	}
 	
 	
+	@Override
 	public int getRGB(int x, int y){
 		
 		int rgb = BACKGROUNG_COLOR;
@@ -37,7 +40,6 @@ public class Scene {
 		int alpha = (layerRgba >> 24) & 0xff;
 		double maskingFactor = alpha / 255.0;
 		double backFactor = 1 - maskingFactor;
-		
 		
 		int red = (int)(getRed(backRgb) * backFactor + getRed(layerRgba) * maskingFactor);
 		int green = (int)(getGreen(backRgb) * backFactor + getGreen(layerRgba) * maskingFactor);
