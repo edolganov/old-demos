@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.spaceage.core.ui.SceneRender;
-import com.spaceage.core.ui.SceneImage;
+import com.spaceage.core.platform.SceneImage;
+import com.spaceage.core.platform.SceneRender;
 
 public class ScenePanel extends JPanel implements SceneRender {
 	
