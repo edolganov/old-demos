@@ -23,7 +23,7 @@ public class SwingApp {
 		
 		int width = 640;
 		int height = 480;
-		Dimension size = new Dimension(width, height);
+		Dimension size = new Dimension(width+8, height+27);
 		window.setMinimumSize(size);
 		window.setMaximumSize(size);
 		
