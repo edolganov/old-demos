@@ -12,6 +12,8 @@ import com.spaceage.core.scene.Scene;
 /** @see http://stackoverflow.com/questions/3256941 */
 public class GamePanel extends JPanel {
 
+    private static final int FRAMES = 24;
+	
 	App app;
 	int width;
 	int height;
@@ -28,6 +30,9 @@ public class GamePanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+    	
+    	long begin = System.currentTimeMillis();
+    	
         super.paintComponent(g);
     	
     	Scene scene = app.getScene();
@@ -39,5 +44,8 @@ public class GamePanel extends JPanel {
 				g.drawLine(x, y, x, y);
 			}
 		}
+		
+        long end = System.currentTimeMillis() - begin;
+        g.drawString("render: "+end+"ms", 5, 16);
     }
 }
