@@ -17,8 +17,12 @@ public class Main {
 				PlatformFactoryImpl factory = new PlatformFactoryImpl();
 				App app = new App(factory);
 				
+				//show window
 				SwingApp swingApp = new SwingApp(app);
 				swingApp.start();
+				
+				//start action
+				app.start();
 			}
 		});
 		
