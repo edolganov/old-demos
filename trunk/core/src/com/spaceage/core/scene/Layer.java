@@ -7,8 +7,7 @@ public abstract class Layer extends VisualObject {
 	
 	private ArrayList<LayerSprite> sprites;
 	private HashMap<String, LayerSprite> spritesMap;
-	protected int width;
-	protected int height;
+
 	
 	public void addSprite(Sprite sprite, int x, int y){
 		initSpriteContainers();
@@ -31,17 +30,6 @@ public abstract class Layer extends VisualObject {
 	@Override
 	public int getRGBA(int x, int y){
 		return getBackgroundRGBA(x, y);
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-
-	@Override
-	public int getHeight() {
-		return height;
 	}
 	
 	
