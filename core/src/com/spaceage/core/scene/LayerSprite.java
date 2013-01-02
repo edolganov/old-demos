@@ -13,6 +13,19 @@ public class LayerSprite {
 		this.y = y;
 	}
 	
+	public boolean isVisible(int targetX, int targetY){
+		
+		int width = sprite.getWidth();
+		int height = sprite.getHeight();
+		
+		return targetX >= x && targetX < (x+width) && targetY >= y && targetY < (y+height);
+		
+	}
+	
+//	public int getRGBA(int x, int y) {
+//		
+//	}
+	
 	
 
 }

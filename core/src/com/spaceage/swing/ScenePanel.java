@@ -6,12 +6,12 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import com.spaceage.core.platform.SceneRender;
-import com.spaceage.core.scene.VisualObject;
+import com.spaceage.core.scene.AbstractVisualObject;
 
 public class ScenePanel extends JPanel implements SceneRender {
 	
 	SwingApp owner;
-	VisualObject scene;
+	AbstractVisualObject scene;
 	int width;
 	int height;
 
@@ -21,7 +21,7 @@ public class ScenePanel extends JPanel implements SceneRender {
 	}
 	
 	@Override
-	public void setScene(VisualObject scene) {
+	public void setScene(AbstractVisualObject scene) {
 		this.scene = scene;
 	}
 	
