@@ -39,7 +39,7 @@ public class MaskLayer extends Layer {
 	}
 
 	@Override
-	public int getRGBA(int x, int y) {
+	protected int getBackgroundRGBA(int x, int y) {
 		if(x < 0 || x >= width || y < 0 || y >= height){
 			return 0;
 		}

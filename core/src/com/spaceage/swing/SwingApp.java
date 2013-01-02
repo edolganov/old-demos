@@ -12,12 +12,8 @@ import com.spaceage.app.App;
 
 public class SwingApp {
 	
-	private static final int DELTA_X = 10;
-	
 	JFrame window;
 	ScenePanel scenePanel;
-	int offsetX;
-	int offsetY;
 	
 	
 	public SwingApp(App app) {
@@ -33,7 +29,7 @@ public class SwingApp {
 		
 		window.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
-		scenePanel = new ScenePanel(this, width, height);
+		scenePanel = new ScenePanel(width, height);
 		app.setRender(scenePanel);
 		window.add(scenePanel);
 		
@@ -50,16 +46,8 @@ public class SwingApp {
 				int keyCode = e.getKeyCode();
 				//<- 37, -> 39, up - 38, down - 40
 				if(keyCode == 37){
-					offsetX = offsetX - DELTA_X;
-					if(offsetX < 0){
-						offsetX = 0;
-					} else {
-						repaintReq();
-					}
 				}
 				else if(keyCode == 39){
-					offsetX = offsetX + DELTA_X;
-					repaintReq();
 				}
 				
 			}
@@ -75,14 +63,6 @@ public class SwingApp {
 			}
 		});
 		
-	}
-
-	public int getOffsetX() {
-		return offsetX;
-	}
-
-	public int getOffsetY() {
-		return offsetY;
 	}
 
 

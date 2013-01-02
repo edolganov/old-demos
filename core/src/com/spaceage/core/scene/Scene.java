@@ -2,10 +2,9 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
-import com.spaceage.core.platform.SceneImage;
 import com.spaceage.util.ImgUtil;
 
-public class Scene implements SceneImage {
+public class Scene implements VisualObject {
 	
 	private static final int BACKGROUNG_COLOR = 0xFFFFFF;
 	
@@ -18,7 +17,7 @@ public class Scene implements SceneImage {
 	
 	
 	@Override
-	public int getRGB(int x, int y){
+	public int getRGBA(int x, int y){
 		
 		int rgb = BACKGROUNG_COLOR;
 		
