@@ -41,8 +41,12 @@ public class ColorUtil {
 		int red = (int)(getRed(backRgba) * backFactor + getRed(frontRgba) * maskingFactor);
 		int green = (int)(getGreen(backRgba) * backFactor + getGreen(frontRgba) * maskingFactor);
 		int blue = (int)(getBlue(backRgba) * backFactor + getBlue(frontRgba) * maskingFactor);
-		int backAlpha = getAlpha(backRgba);
-		return getColor(red, green, blue, backAlpha);
+		
+		int finalAlpha = getAlpha(backRgba);
+		if(finalAlpha == 0){
+			finalAlpha = frontAlpha;
+		}
+		return getColor(red, green, blue, finalAlpha);
 	}
 
 }
