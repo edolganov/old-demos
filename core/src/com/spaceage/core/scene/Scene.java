@@ -2,7 +2,7 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
-import com.spaceage.util.ImgUtil;
+import com.spaceage.util.ColorUtil;
 
 public class Scene extends AbstractVisualObject {
 	
@@ -22,12 +22,12 @@ public class Scene extends AbstractVisualObject {
 	@Override
 	public int getRGBA(int x, int y){
 		
-		int outColor = ImgUtil.WHITE_COLOR;
+		int outColor = ColorUtil.WHITE_COLOR;
 		
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
 			int layerColor = getLayerRGBA(i, x, y, layer);
-			outColor = ImgUtil.mixColors(outColor, layerColor);
+			outColor = ColorUtil.mixColors(outColor, layerColor);
 		}
 		
 		return outColor;

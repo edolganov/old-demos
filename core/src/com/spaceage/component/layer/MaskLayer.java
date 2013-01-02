@@ -3,7 +3,7 @@ package com.spaceage.component.layer;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.platform.Platform;
 import com.spaceage.core.scene.Layer;
-import com.spaceage.util.ImgUtil;
+import com.spaceage.util.ColorUtil;
 
 public class MaskLayer extends Layer {
 	
@@ -22,7 +22,7 @@ public class MaskLayer extends Layer {
 				
 				int imgColor;
 				int maskColor = mask.getRGBA(x, y);
-				if(ImgUtil.clearAlpha(maskColor) == 0){
+				if(ColorUtil.clearAlpha(maskColor) == 0){
 					imgColor = 0;
 				} else {
 					imgColor = maskColor;

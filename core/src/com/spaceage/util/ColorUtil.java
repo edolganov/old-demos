@@ -1,6 +1,6 @@
 package com.spaceage.util;
 
-public class ImgUtil {
+public class ColorUtil {
 	
 	public static final int WHITE_COLOR = 0xFFFFFFFF;
 	public static final int EMPTY_COLOR = 0;
