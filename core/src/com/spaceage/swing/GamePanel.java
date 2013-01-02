@@ -46,6 +46,6 @@ public class GamePanel extends JPanel {
 		}
 		
         long end = System.currentTimeMillis() - begin;
-        g.drawString("render: "+end+"ms", 5, 16);
+        g.drawString("render: "+end+"ms; maxFPS: "+(int)(1000/(double)end), 5, 16);
     }
 }

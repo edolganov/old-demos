@@ -92,7 +92,7 @@ public class AnimationTest extends JPanel implements ActionListener {
         String s = String.format("%1$5.3f", averageTime / 1000000d);
         
         long end = System.currentTimeMillis() - begin;
-        g.drawString("render: "+end+"ms", 5, 16);
+        g.drawString("render: "+end+"ms; maxFPS: "+(int)(1000/(double)end), 5, 16);
     }
 
     @Override
