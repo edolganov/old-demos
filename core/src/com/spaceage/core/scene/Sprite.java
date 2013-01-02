@@ -9,8 +9,6 @@ import com.spaceage.util.Util;
 public class Sprite extends VisualObject {
 	
 	private String id;
-	private int width;
-	private int height;
 	private ArrayList<Image> images;
 	
 	public Sprite() {
@@ -32,16 +30,6 @@ public class Sprite extends VisualObject {
 
 	public String getId() {
 		return id;
-	}
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
 	}
 
 	@Override

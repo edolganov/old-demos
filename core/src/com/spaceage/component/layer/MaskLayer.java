@@ -11,12 +11,8 @@ public class MaskLayer extends Layer {
 	
 	
 	public MaskLayer(String resourcePath) {
-		Image maskImg = Platform.factory.createImage(resourcePath);
-		createModelAndImg(maskImg);
 		
-	}
-
-	private void createModelAndImg(Image mask) {
+		Image mask = Platform.factory.createImage(resourcePath);
 		width = mask.getWidth();
 		height = mask.getHeight();
 		img = new int[width][height];
@@ -34,11 +30,12 @@ public class MaskLayer extends Layer {
 				img[x][y] = imgColor;
 			}
 		}
+		
 	}
 
 	@Override
 	protected int getBackgroundRGBA(int x, int y) {
-		if(x < 0 || x >= width || y < 0 || y >= height){
+		if( ! inBounds(x, y)){
 			return 0;
 		}
 		return img[x][y];

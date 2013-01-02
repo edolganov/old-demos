@@ -18,16 +18,8 @@ public class ImageImpl extends Image {
 		} catch (IOException e) {
 			throw new IllegalStateException("can't load image", e);
 		}
-	}
-
-	@Override
-	public int getWidth() {
-		return bufferedImage.getWidth();
-	}
-
-	@Override
-	public int getHeight() {
-		return bufferedImage.getHeight();
+		width = bufferedImage.getWidth();
+		height = bufferedImage.getHeight();
 	}
 
 	@Override

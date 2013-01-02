@@ -8,8 +8,13 @@ public class Scene extends VisualObject {
 	
 	private static final int BACKGROUNG_COLOR = 0xFFFFFF;
 	
-	
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
+	
+	public Scene() {
+		width = Integer.MAX_VALUE;
+		height = Integer.MAX_VALUE;
+	}
+	
 	
 	public void add(Layer layer){
 		layers.add(layer);
@@ -45,17 +50,6 @@ public class Scene extends VisualObject {
 		int green = (int)(ImgUtil.getGreen(backRgb) * backFactor + ImgUtil.getGreen(layerRgba) * maskingFactor);
 		int blue = (int)(ImgUtil.getBlue(backRgb) * backFactor + ImgUtil.getBlue(layerRgba) * maskingFactor);
 		return ImgUtil.getColor(red, green, blue);
-	}
-
-
-	@Override
-	public int getWidth() {
-		return Integer.MAX_VALUE;
-	}
-
-	@Override
-	public int getHeight() {
-		return Integer.MAX_VALUE;
 	}
 	
 	
