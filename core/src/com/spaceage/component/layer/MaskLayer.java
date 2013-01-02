@@ -1,7 +1,7 @@
 package com.spaceage.component.layer;
 
+import com.spaceage.app.Global;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.platform.Platform;
 import com.spaceage.core.scene.Layer;
 import com.spaceage.util.ColorUtil;
 
@@ -12,7 +12,7 @@ public class MaskLayer extends Layer {
 	
 	public MaskLayer(String resourcePath) {
 		
-		Image mask = Platform.factory.createImage(resourcePath);
+		Image mask = Global.factory.createImage(resourcePath);
 		width = mask.getWidth();
 		height = mask.getHeight();
 		img = new int[width][height];
