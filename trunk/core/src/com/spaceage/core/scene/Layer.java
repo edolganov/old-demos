@@ -3,6 +3,7 @@ package com.spaceage.core.scene;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.spaceage.util.ColorUtil;
 import com.spaceage.util.Util;
 
 public abstract class Layer extends AbstractVisualObject {
@@ -16,7 +17,7 @@ public abstract class Layer extends AbstractVisualObject {
 		
 		LayerSprite layerSprite = new LayerSprite(sprite, x, y);
 		sprites.add(layerSprite);
-		spritesMap.put(layerSprite.sprite.getId(), layerSprite);
+		spritesMap.put(layerSprite.getId(), layerSprite);
 		
 	}
 	
@@ -47,11 +48,12 @@ public abstract class Layer extends AbstractVisualObject {
 		for(int i=0; i < sprites.size(); ++i){
 			LayerSprite layerSprite = sprites.get(i);
 			if(layerSprite.isVisible(x, y)){
-				
+				int spriteColor = layerSprite.getRGBA(x, y);
+				outColor = ColorUtil.mixColors(outColor, spriteColor);
 			}
 		}
 		
-		return 0;
+		return outColor;
 	}
 
 
