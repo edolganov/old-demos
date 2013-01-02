@@ -5,24 +5,23 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.spaceage.core.platform.SceneImage;
 import com.spaceage.core.platform.SceneRender;
+import com.spaceage.core.scene.VisualObject;
 
 public class ScenePanel extends JPanel implements SceneRender {
 	
 	SwingApp owner;
-	SceneImage scene;
+	VisualObject scene;
 	int width;
 	int height;
 
-	public ScenePanel(SwingApp owner, int width, int height) {
-		this.owner = owner;
+	public ScenePanel(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
 	
 	@Override
-	public void setScene(SceneImage scene) {
+	public void setScene(VisualObject scene) {
 		this.scene = scene;
 	}
 	
@@ -36,9 +35,7 @@ public class ScenePanel extends JPanel implements SceneRender {
 		
 		for(int x=0; x < width; ++x){
 			for(int y=0; y < height; y++){
-				int sceneX = x + owner.getOffsetX();
-				int sceneY = y + owner.getOffsetY();
-				int rgb = scene.getRGB(sceneX, sceneY);
+				int rgb = scene.getRGBA(x, y);
 				g.setColor(new Color(rgb));
 				g.drawLine(x, y, x, y);
 				

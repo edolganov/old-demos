@@ -18,7 +18,7 @@ public class ImgLayer extends Layer {
 	
 
 	@Override
-	public int getRGBA(int x, int y) {
+	protected int getBackgroundRGBA(int x, int y) {
 		x = x % width;
 		y = y % height;
 		return img.getRGBA(x, y);

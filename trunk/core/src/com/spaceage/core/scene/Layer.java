@@ -1,7 +1,14 @@
 package com.spaceage.core.scene;
 
-public abstract class Layer {
+public abstract class Layer implements VisualObject {
 	
-	public abstract int getRGBA(int x, int y);
+	
+	@Override
+	public int getRGBA(int x, int y){
+		return getBackgroundRGBA(x, y);
+	}
+	
+	
+	protected abstract int getBackgroundRGBA(int x, int y);
 
 }
