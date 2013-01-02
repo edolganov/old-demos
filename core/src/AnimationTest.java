@@ -66,6 +66,9 @@ public class AnimationTest extends JPanel implements ActionListener {
 
     @Override
     protected void paintComponent(Graphics g) {
+    	
+    	long begin = System.currentTimeMillis();
+    	
         long start = System.nanoTime();
         super.paintComponent(g);
         int w = this.getWidth();
@@ -87,7 +90,9 @@ public class AnimationTest extends JPanel implements ActionListener {
             frameCount++;
         }
         String s = String.format("%1$5.3f", averageTime / 1000000d);
-        g.drawString(s, 5, 16);
+        
+        long end = System.currentTimeMillis() - begin;
+        g.drawString("render: "+end+"ms", 5, 16);
     }
 
     @Override
