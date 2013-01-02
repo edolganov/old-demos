@@ -6,19 +6,19 @@ import java.util.List;
 
 public class SpritesContainer {
 	
-	private ArrayList<LayerSprite> sprites;
-	private HashMap<String, LayerSprite> spritesMap;
+	private ArrayList<Sprite> sprites;
+	private HashMap<String, Sprite> spritesMap;
 	
-	public LayerSprite createSprite(String resoursePath, int x, int y){
+	public Sprite createSprite(String resoursePath, int x, int y){
 
 		
-		LayerSprite sprite = new LayerSprite(resoursePath, x, y);
+		Sprite sprite = new Sprite(resoursePath, x, y);
 		addSprite(sprite);
 		return sprite;
 		
 	}
 	
-	public void addSprite(LayerSprite sprite){
+	public void addSprite(Sprite sprite){
 		initSpriteContainers();
 		sprites.add(sprite);
 		spritesMap.put(sprite.getId(), sprite);
@@ -27,12 +27,12 @@ public class SpritesContainer {
 	
 	private void initSpriteContainers() {
 		if(sprites == null){
-			sprites = new ArrayList<LayerSprite>();
-			spritesMap = new HashMap<String, LayerSprite>();
+			sprites = new ArrayList<Sprite>();
+			spritesMap = new HashMap<String, Sprite>();
 		}
 	}
 	
-	public List<LayerSprite> getList(){
+	public List<Sprite> getList(){
 		return sprites;
 	}
 

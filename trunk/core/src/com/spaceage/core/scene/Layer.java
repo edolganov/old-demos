@@ -25,13 +25,13 @@ public abstract class Layer extends AbstractVisualObject {
 	
 	private int mixWithSprites(int outColor, int x, int y) {
 		
-		List<LayerSprite> list = sprites.getList();
+		List<Sprite> list = sprites.getList();
 		if(list == null){
 			return outColor;
 		}
 		
 		for(int i=0; i < list.size(); ++i){
-			LayerSprite layerSprite = list.get(i);
+			Sprite layerSprite = list.get(i);
 			if(layerSprite.isVisible(x, y)){
 				int spriteColor = layerSprite.getRGBA(x, y);
 				outColor = ColorUtil.mixColors(outColor, spriteColor);
@@ -46,14 +46,14 @@ public abstract class Layer extends AbstractVisualObject {
 	
 	
 	public void updateState() {
-		List<LayerSprite> list = sprites.getList();
+		List<Sprite> list = sprites.getList();
 		if(list == null){
 			return;
 		}
 		
 		//move all sprites
 		for(int i=0; i < list.size(); ++i){
-			LayerSprite layerSprite = list.get(i);
+			Sprite sprite = list.get(i);
 		}
 	}
 

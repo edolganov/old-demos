@@ -6,7 +6,7 @@ import com.spaceage.core.platform.Image;
 import com.spaceage.core.platform.Platform;
 import com.spaceage.util.Util;
 
-public class LayerSprite extends AbstractVisualObject {
+public class Sprite extends AbstractVisualObject {
 	
 	private String id;
 	private ArrayList<Image> images;
@@ -19,7 +19,7 @@ public class LayerSprite extends AbstractVisualObject {
 	private int speedX;
 	private int speedY;
 	
-	public LayerSprite(String resourcePath, int x, int y){
+	public Sprite(String resourcePath, int x, int y){
 		
 		id = Util.randomUUID();
 		
