@@ -82,12 +82,14 @@ public class Sprite extends AbstractVisualObject {
 		return 0;
 	}
 
-	private int getSpriteY(int globalY) {
-		return globalY - getX();
-	}
+
 
 	private int getSpriteX(int globalX) {
-		return globalX - getY();
+		return globalX - getX();
+	}
+	
+	private int getSpriteY(int globalY) {
+		return globalY - getY();
 	}
 
 	public void setSpeed(int speedX, int speedY) {

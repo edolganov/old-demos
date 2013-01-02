@@ -20,9 +20,6 @@ public class Main {
 				//show window
 				SwingApp swingApp = new SwingApp(app);
 				swingApp.start();
-				
-				//start action
-				app.start();
 			}
 		});
 		
