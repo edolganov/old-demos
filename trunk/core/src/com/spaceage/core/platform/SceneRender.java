@@ -1,9 +1,9 @@
 package com.spaceage.core.platform;
 
-import com.spaceage.core.scene.VisualObject;
+import com.spaceage.core.scene.AbstractVisualObject;
 
 public interface SceneRender {
 	
-	void setScene(VisualObject scene);
+	void setScene(AbstractVisualObject scene);
 
 }

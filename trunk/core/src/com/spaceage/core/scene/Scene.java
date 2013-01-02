@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import com.spaceage.util.ImgUtil;
 
-public class Scene extends VisualObject {
-	
-	private static final int BACKGROUNG_COLOR = 0xFFFFFF;
+public class Scene extends AbstractVisualObject {
 	
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
 	
@@ -24,32 +22,20 @@ public class Scene extends VisualObject {
 	@Override
 	public int getRGBA(int x, int y){
 		
-		int rgb = BACKGROUNG_COLOR;
+		int outColor = ImgUtil.WHITE_COLOR;
 		
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
-			int rgba = getLayerRGBA(i, x, y, layer);
-			rgb = mixColors(rgb, rgba);
+			int layerColor = getLayerRGBA(i, x, y, layer);
+			outColor = ImgUtil.mixColors(outColor, layerColor);
 		}
 		
-		return rgb;
+		return outColor;
 	}
 
 
 	private int getLayerRGBA(int index, int globalX, int globalY, Layer layer) {
 		return layer.getRGBA(globalX, globalY);
-	}
-	
-
-	private int mixColors(int backRgb, int layerRgba) {
-		int alpha = (layerRgba >> 24) & 0xff;
-		double maskingFactor = alpha / 255.0;
-		double backFactor = 1 - maskingFactor;
-		
-		int red = (int)(ImgUtil.getRed(backRgb) * backFactor + ImgUtil.getRed(layerRgba) * maskingFactor);
-		int green = (int)(ImgUtil.getGreen(backRgb) * backFactor + ImgUtil.getGreen(layerRgba) * maskingFactor);
-		int blue = (int)(ImgUtil.getBlue(backRgb) * backFactor + ImgUtil.getBlue(layerRgba) * maskingFactor);
-		return ImgUtil.getColor(red, green, blue);
 	}
 	
 	

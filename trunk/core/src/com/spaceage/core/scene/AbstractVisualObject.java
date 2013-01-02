@@ -1,6 +1,6 @@
 package com.spaceage.core.scene;
 
-public abstract class VisualObject {
+public abstract class AbstractVisualObject {
 	
 	protected int width;
 	protected int height;

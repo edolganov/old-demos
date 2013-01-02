@@ -6,7 +6,7 @@ import com.spaceage.core.platform.Image;
 import com.spaceage.core.platform.Platform;
 import com.spaceage.util.Util;
 
-public class Sprite extends VisualObject {
+public class Sprite extends AbstractVisualObject {
 	
 	private String id;
 	private ArrayList<Image> images;
