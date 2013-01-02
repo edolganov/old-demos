@@ -1,11 +1,8 @@
 package com.spaceage.core.platform;
 
-public interface Image {
-	
-	int getWidth();
-	
-	int getHeight();
-	
-	int getRGBA(int x, int y);
+import com.spaceage.core.scene.VisualObject;
+
+public abstract class Image extends VisualObject {
+
 
 }

@@ -7,20 +7,23 @@ import com.spaceage.core.scene.Layer;
 public class ImgLayer extends Layer {
 	
 	Image img;
-	int width;
-	int height;
+	int imgWith;
+	int imgHeight;
 	
 	public ImgLayer(String resourcePath) {
 		img = Platform.factory.createImage(resourcePath);
-		width = img.getWidth();
-		height = img.getHeight();
+		imgWith = img.getWidth();
+		imgHeight = img.getHeight();
+		
+		width = Integer.MAX_VALUE;
+		height = Integer.MAX_VALUE;
 	}
 	
 
 	@Override
 	protected int getBackgroundRGBA(int x, int y) {
-		x = x % width;
-		y = y % height;
+		x = x % imgWith;
+		y = y % imgHeight;
 		return img.getRGBA(x, y);
 	}
 
