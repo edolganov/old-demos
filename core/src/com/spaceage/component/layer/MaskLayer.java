@@ -8,8 +8,6 @@ import com.spaceage.util.ImgUtil;
 public class MaskLayer extends Layer {
 	
 	int[][] img;
-	int width;
-	int height;
 	
 	
 	public MaskLayer(String resourcePath) {

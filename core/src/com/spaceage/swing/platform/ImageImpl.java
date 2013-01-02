@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import com.spaceage.core.platform.Image;
 
-public class ImageImpl implements Image {
+public class ImageImpl extends Image {
 
 	BufferedImage bufferedImage;
 	

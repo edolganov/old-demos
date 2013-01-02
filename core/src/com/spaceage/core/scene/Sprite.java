@@ -1,32 +1,63 @@
 package com.spaceage.core.scene;
 
+import java.util.ArrayList;
+
+import com.spaceage.core.platform.Image;
+import com.spaceage.core.platform.Platform;
 import com.spaceage.util.Util;
 
-public class Sprite implements VisualObject {
+public class Sprite extends VisualObject {
 	
 	private String id;
 	private int width;
 	private int height;
+	private ArrayList<Image> images;
 	
 	public Sprite() {
 		id = Util.randomUUID();
+	}
+	
+	public Sprite(String resourcePath){
+		this();
+		
+		Image img = Platform.factory.createImage(resourcePath);
+		
+		//single img
+		images = new ArrayList<Image>();
+		images.add(img);
+		width = img.getWidth();
+		height = img.getHeight();
+		
 	}
 
 	public String getId() {
 		return id;
 	}
 
+	@Override
 	public int getWidth() {
 		return width;
 	}
 
+	@Override
 	public int getHeight() {
 		return height;
 	}
 
 	@Override
 	public int getRGBA(int x, int y) {
-		// TODO Auto-generated method stub
+		
+		if(Util.isEmpty(images)){
+			return 0;
+		}
+		
+		//single img
+		if(images.size() == 1){
+			return images.get(0).getRGBA(x, y);
+		}
+		
+		//animated sprite
+		//TODO
 		return 0;
 	}
 	

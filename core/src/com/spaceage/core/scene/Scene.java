@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.spaceage.util.ImgUtil;
 
-public class Scene implements VisualObject {
+public class Scene extends VisualObject {
 	
 	private static final int BACKGROUNG_COLOR = 0xFFFFFF;
 	
@@ -45,6 +45,17 @@ public class Scene implements VisualObject {
 		int green = (int)(ImgUtil.getGreen(backRgb) * backFactor + ImgUtil.getGreen(layerRgba) * maskingFactor);
 		int blue = (int)(ImgUtil.getBlue(backRgb) * backFactor + ImgUtil.getBlue(layerRgba) * maskingFactor);
 		return ImgUtil.getColor(red, green, blue);
+	}
+
+
+	@Override
+	public int getWidth() {
+		return Integer.MAX_VALUE;
+	}
+
+	@Override
+	public int getHeight() {
+		return Integer.MAX_VALUE;
 	}
 	
 	

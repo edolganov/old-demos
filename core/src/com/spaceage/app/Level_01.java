@@ -10,9 +10,13 @@ public class Level_01 {
 	
 	public Level_01() {
 		
+		ImgLayer sky = new ImgLayer("/content/l01/sky.png");
+		
+		MaskLayer level = new MaskLayer("/content/l01/l01-model.png");
+		
 		scene = new Scene();
-		scene.add(new ImgLayer("/content/l01/sky.png"));
-		scene.add(new MaskLayer("/content/l01/l01-model.png"));
+		scene.add(sky);
+		scene.add(level);
 		
 	}
 

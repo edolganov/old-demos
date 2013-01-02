@@ -1,7 +1,11 @@
 package com.spaceage.core.scene;
 
-public interface VisualObject {
+public abstract class VisualObject {
 	
-	int getRGBA(int x, int y);
+	public abstract int getRGBA(int x, int y);
 
+	public abstract int getWidth();
+	
+	public abstract int getHeight();
+	
 }
