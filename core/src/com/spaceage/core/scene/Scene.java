@@ -1,33 +1,21 @@
 package com.spaceage.core.scene;
 
 import java.util.ArrayList;
-import java.util.Timer;
 
-import com.spaceage.core.scene.timer.SceneListener;
-import com.spaceage.core.scene.timer.SceneTimerTask;
-import com.spaceage.core.scene.timer.SceneUpdater;
 import com.spaceage.util.ColorUtil;
-import com.spaceage.util.Util;
 
-public class Scene extends AbstractVisualObject implements SceneUpdater {
+public class Scene extends AbstractVisualObject {
 	
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
-	private Timer timer;
-	private SceneListener updateSceneListener;
 	
 	public Scene() {
 		width = Integer.MAX_VALUE;
 		height = Integer.MAX_VALUE;
-		timer = new Timer("scene-timer-"+Util.toObjectString(this), true);
 	}
 	
 	
 	public void add(Layer layer){
 		layers.add(layer);
-	}
-	
-	public void setUpdateSceneListener(SceneListener updateSceneListener) {
-		this.updateSceneListener = updateSceneListener;
 	}
 
 
@@ -50,23 +38,6 @@ public class Scene extends AbstractVisualObject implements SceneUpdater {
 		return layer.getRGBA(globalX, globalY);
 	}
 
-
-	public void start(int delay, int period) {
-		timer.schedule(new SceneTimerTask(this), delay, period);
-	}
-	
-	public void stop(){
-		timer.cancel();
-	}
-
-
-	public void nextStateReq() {
-		if(updateSceneListener != null){
-			updateSceneListener.onUpdateRequest(this);
-		}
-	}
-
-	@Override
 	public void updateScene() {
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
