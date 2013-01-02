@@ -1,32 +1,16 @@
 package com.spaceage.core.scene;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 import com.spaceage.util.ColorUtil;
-import com.spaceage.util.Util;
 
 public abstract class Layer extends AbstractVisualObject {
 	
-	private ArrayList<LayerSprite> sprites;
-	private HashMap<String, LayerSprite> spritesMap;
-
-	
-	public void addSprite(Sprite sprite, int x, int y){
-		initSpriteContainers();
-		
-		LayerSprite layerSprite = new LayerSprite(sprite, x, y);
-		sprites.add(layerSprite);
-		spritesMap.put(layerSprite.getId(), layerSprite);
-		
-	}
+	private SpritesContainer sprites = new SpritesContainer();
 	
 	
-	private void initSpriteContainers() {
-		if(sprites == null){
-			sprites = new ArrayList<LayerSprite>();
-			spritesMap = new HashMap<String, LayerSprite>();
-		}
+	public SpritesContainer getSpriteContainer() {
+		return sprites;
 	}
 
 
@@ -41,12 +25,13 @@ public abstract class Layer extends AbstractVisualObject {
 	
 	private int mixWithSprites(int outColor, int x, int y) {
 		
-		if(Util.isEmpty(sprites)){
+		List<LayerSprite> list = sprites.getList();
+		if(list == null){
 			return outColor;
 		}
 		
-		for(int i=0; i < sprites.size(); ++i){
-			LayerSprite layerSprite = sprites.get(i);
+		for(int i=0; i < list.size(); ++i){
+			LayerSprite layerSprite = list.get(i);
 			if(layerSprite.isVisible(x, y)){
 				int spriteColor = layerSprite.getRGBA(x, y);
 				outColor = ColorUtil.mixColors(outColor, spriteColor);
@@ -58,5 +43,18 @@ public abstract class Layer extends AbstractVisualObject {
 
 
 	protected abstract int getBackgroundRGBA(int x, int y);
+	
+	
+	public void updateState() {
+		List<LayerSprite> list = sprites.getList();
+		if(list == null){
+			return;
+		}
+		
+		//move all sprites
+		for(int i=0; i < list.size(); ++i){
+			LayerSprite layerSprite = list.get(i);
+		}
+	}
 
 }

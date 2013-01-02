@@ -9,11 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import com.spaceage.app.App;
+import com.spaceage.core.scene.timer.SceneListener;
+import com.spaceage.core.scene.timer.SceneUpdater;
 
 public class SwingApp {
 	
 	JFrame window;
 	ScenePanel scenePanel;
+	SceneListenerImpl sceneListener;
 	
 	
 	public SwingApp(App app) {
@@ -29,9 +32,14 @@ public class SwingApp {
 		
 		window.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		
+		//scene panel
 		scenePanel = new ScenePanel(width, height);
 		app.setRender(scenePanel);
 		window.add(scenePanel);
+		
+		//update listener
+		sceneListener = new SceneListenerImpl(this);
+		app.setSceneListener(sceneListener);
 		
 		window.addKeyListener(new KeyListener() {
 			
@@ -54,25 +62,45 @@ public class SwingApp {
 		});
 	}
 	
-	private void repaintReq() {
-		SwingUtilities.invokeLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				scenePanel.repaint();
-			}
-		});
-		
+	private void repaintScene() {
+		scenePanel.repaint();
 	}
-
-
-
-
-
 
 	public void start() {
 		window.pack();
 		window.setVisible(true);
+	}
+
+	
+	private static final class SceneListenerImpl implements SceneListener, Runnable {
+		
+		final SwingApp owner;
+		volatile SceneUpdater sceneUpdater;
+
+		public SceneListenerImpl(SwingApp owner) {
+			super();
+			this.owner = owner;
+		}
+
+		@Override
+		public void onUpdateRequest(SceneUpdater sceneUpdater) {
+			this.sceneUpdater = sceneUpdater;
+			SwingUtilities.invokeLater(this);
+		}
+		
+		/**
+		 * for EventQueue thread only
+		 */
+		@Override
+		public void run() {
+			SceneUpdater curUpdater = sceneUpdater;
+			if(curUpdater != null){
+				curUpdater.updateScene();
+				owner.repaintScene();
+			}
+			
+		}
+		
 	}
 
 }
