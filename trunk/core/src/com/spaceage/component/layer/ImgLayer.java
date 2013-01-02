@@ -1,7 +1,7 @@
 package com.spaceage.component.layer;
 
+import com.spaceage.app.Global;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.platform.Platform;
 import com.spaceage.core.scene.Layer;
 
 public class ImgLayer extends Layer {
@@ -11,7 +11,7 @@ public class ImgLayer extends Layer {
 	int imgHeight;
 	
 	public ImgLayer(String resourcePath) {
-		img = Platform.factory.createImage(resourcePath);
+		img = Global.factory.createImage(resourcePath);
 		imgWith = img.getWidth();
 		imgHeight = img.getHeight();
 		

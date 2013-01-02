@@ -54,6 +54,7 @@ public abstract class Layer extends AbstractVisualObject {
 		//move all sprites
 		for(int i=0; i < list.size(); ++i){
 			Sprite sprite = list.get(i);
+			sprite.move();
 		}
 	}
 

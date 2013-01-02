@@ -2,8 +2,8 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
+import com.spaceage.app.Global;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.platform.Platform;
 import com.spaceage.util.Util;
 
 public class Sprite extends AbstractVisualObject {
@@ -12,23 +12,25 @@ public class Sprite extends AbstractVisualObject {
 	private ArrayList<Image> images;
 	
 	//cur position
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	
 	//speed vector
-	private int speedX;
-	private int speedY;
+	private double speedX;
+	private double speedY;
 	
-	public Sprite(String resourcePath, int x, int y){
-		
+	private Sprite(int x, int y){
 		id = Util.randomUUID();
-		
-		Image img = Platform.factory.createImage(resourcePath);
 		this.x = x;
 		this.y = y;
+		images = new ArrayList<Image>();
+	}
+	
+	public Sprite(String resourcePath, int x, int y){
+		this(x, y);
 		
 		//single img
-		images = new ArrayList<Image>();
+		Image img = Global.factory.createImage(resourcePath);
 		images.add(img);
 		width = img.getWidth();
 		height = img.getHeight();
@@ -81,12 +83,52 @@ public class Sprite extends AbstractVisualObject {
 	}
 
 	private int getSpriteY(int globalY) {
-		return globalY - y;
+		return globalY - getX();
 	}
 
 	private int getSpriteX(int globalX) {
-		return globalX - x;
+		return globalX - getY();
 	}
+
+	public void setSpeed(int speedX, int speedY) {
+		this.speedX = speedX * Global.slowdownConst;
+		this.speedY = speedY * Global.slowdownConst;
+	}
+
+	public int getX() {
+		return (int)x;
+	}
+
+	public int getY() {
+		return (int)y;
+	}
+	
+	public double getRealX() {
+		return x;
+	}
+
+	public double getRealY() {
+		return y;
+	}
+	
+	void move() {
+		if(speedX != 0){
+			x = x + speedX;
+		}
+		if(speedY != 0){
+			y = y + speedY;
+		}
+	}
+
+	public double getSpeedX() {
+		return speedX;
+	}
+
+	public double getSpeedY() {
+		return speedY;
+	}
+	
+	
 	
 
 }

@@ -1,6 +1,5 @@
 package com.spaceage.app;
 
-import com.spaceage.core.platform.Platform;
 import com.spaceage.core.platform.PlatformFactory;
 import com.spaceage.core.platform.SceneRender;
 import com.spaceage.core.scene.Scene;
@@ -15,7 +14,7 @@ public class App {
 	
 	public App(PlatformFactory factory) {
 		
-		Platform.factory = factory;
+		Global.factory = factory;
 		
 		level = new Level_01();
 		scene = level.getScene();
