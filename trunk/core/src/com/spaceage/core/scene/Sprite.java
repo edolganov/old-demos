@@ -38,12 +38,14 @@ public class Sprite implements VisualObject {
 	
 	public boolean isVisible(Window window){
 		
-		int width = getWidth();
-		int height = getHeight();
-		int spriteX = getSpriteX(globalX);
-		int spriteY = getSpriteY(globalY);
+//		int width = getWidth();
+//		int height = getHeight();
+//		int spriteX = getSpriteX(globalX);
+//		int spriteY = getSpriteY(globalY);
+//		
+//		return spriteX >= 0 && spriteX < width && spriteY >= 0 && spriteY < height;
 		
-		return spriteX >= 0 && spriteX < width && spriteY >= 0 && spriteY < height;
+		return false;
 		
 	}
 	
@@ -58,12 +60,12 @@ public class Sprite implements VisualObject {
 			return;
 		}
 	
-		int spriteX = getSpriteX(globalX);
-		int spriteY = getSpriteY(globalY);
+		//int spriteX = getSpriteX(globalX);
+		//int spriteY = getSpriteY(globalY);
 	
 		//single img
 		if(images.size() == 1){
-			images.get(0).draw(spriteX, spriteY, manager, platformGraphics);
+			//images.get(0).draw(spriteX, spriteY, manager, platformGraphics);
 			return;
 		}
 	
