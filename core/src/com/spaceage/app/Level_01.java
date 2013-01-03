@@ -22,12 +22,13 @@ public class Level_01 {
 		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 330);
 		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 600, 420);
 		
-		player.setSpeed(20, 0);
 		
 		scene = new Scene(window);
 		scene.add(sky);
 		scene.add(level);
 		
+		player.setVelocity(20, 0);
+		scene.setWindowVelocity(20, 0);
 	}
 
 	public Scene getScene() {
