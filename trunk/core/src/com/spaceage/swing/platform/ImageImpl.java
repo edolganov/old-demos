@@ -6,7 +6,6 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 
 public class ImageImpl extends Image {
@@ -19,19 +18,10 @@ public class ImageImpl extends Image {
 		} catch (IOException e) {
 			throw new IllegalStateException("can't load image", e);
 		}
-		width = bufferedImage.getWidth();
-		height = bufferedImage.getHeight();
 	}
 	
 	public ImageImpl(int width, int height) {
 		bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-		this.width = width;
-		this.height = height;
-	}
-
-	@Override
-	public void draw(int x, int y, GraphicsManager manager, Object platformGraphics) {
-		manager.draw(this, x, y, platformGraphics);
 	}
 	
 	@Override
@@ -46,6 +36,16 @@ public class ImageImpl extends Image {
 	
 	public BufferedImage getBufferedImage(){
 		return bufferedImage;
+	}
+
+	@Override
+	public int getWidth() {
+		return bufferedImage.getWidth();
+	}
+
+	@Override
+	public int getHeight() {
+		return bufferedImage.getHeight();
 	}
 
 

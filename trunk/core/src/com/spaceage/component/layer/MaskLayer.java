@@ -4,6 +4,7 @@ import com.spaceage.app.Global;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Layer;
+import com.spaceage.core.scene.Window;
 import com.spaceage.util.ColorUtil;
 
 public class MaskLayer extends Layer {
@@ -14,8 +15,8 @@ public class MaskLayer extends Layer {
 	public MaskLayer(String resourcePath) {
 		
 		Image mask = Global.factory.createImage(resourcePath);
-		width = mask.getWidth();
-		height = mask.getHeight();
+		int width = mask.getWidth();
+		int height = mask.getHeight();
 		image = Global.factory.createEmptyImage(width, height);
 		
 		for(int x=0; x < width; ++x){
@@ -36,7 +37,7 @@ public class MaskLayer extends Layer {
 	
 	
 	@Override
-	protected void drawBackgroud(int x, int y, GraphicsManager manager, Object platformGraphics) {
+	protected void drawBackgroud(Window window, GraphicsManager manager, Object platformGraphics) {
 		manager.draw(image, x, y, platformGraphics);
 	}
 	

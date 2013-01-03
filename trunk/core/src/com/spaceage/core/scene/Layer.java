@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.spaceage.core.platform.GraphicsManager;
 
-public abstract class Layer extends AbstractVisualObject {
+public abstract class Layer implements VisualObject {
 	
 	private SpritesContainer sprites = new SpritesContainer();
 	
@@ -23,15 +23,15 @@ public abstract class Layer extends AbstractVisualObject {
 //	}
 	
 	@Override
-	public void draw(int x, int y, GraphicsManager manager, Object platformGraphics) {
-		drawBackgroud(x, y, manager, platformGraphics);
-		drawSprites(x, y, manager, platformGraphics);
+	public void draw(Window window, GraphicsManager manager, Object platformGraphics) {
+		drawBackgroud(window, manager, platformGraphics);
+		drawSprites(window, manager, platformGraphics);
 	}
 
-	protected abstract void drawBackgroud(int x, int y, GraphicsManager manager, Object platformGraphics);
+	protected abstract void drawBackgroud(Window window, GraphicsManager manager, Object platformGraphics);
 	
 	
-	private void drawSprites(int x, int y, GraphicsManager manager, Object platformGraphics) {
+	private void drawSprites(Window window, GraphicsManager manager, Object platformGraphics) {
 		
 		List<Sprite> list = sprites.getList();
 		if(list == null){
@@ -40,10 +40,9 @@ public abstract class Layer extends AbstractVisualObject {
 		
 		for(int i=0; i < list.size(); ++i){
 			Sprite sprite = list.get(i);
-			//if(sprite.isVisible(x, y)){
-				//sprite.draw(x, y, manager, platformGraphics);
-			//}
-			sprite.draw(x, y, manager, platformGraphics);
+			if(sprite.isVisible(window)){
+				sprite.draw(window, manager, platformGraphics);
+			}
 		}
 	}
 	
