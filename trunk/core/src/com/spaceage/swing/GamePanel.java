@@ -1,5 +1,6 @@
 package com.spaceage.swing;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -39,6 +40,9 @@ public class GamePanel extends JPanel implements GraphicsManager {
     	Scene scene = app.getScene();
     	scene.draw(this, g);
 		
+    	g.setColor(new Color(0x33000000, true));
+    	g.fillRect(0, 0, 205, 20);
+    	g.setColor(Color.WHITE);
         long end = System.currentTimeMillis() - begin;
         g.drawString("render: "+end+"ms; maxFPS: "+(int)(1000/(double)end), 5, 16);
     }
