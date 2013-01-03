@@ -11,20 +11,23 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import com.spaceage.app.App;
+import com.spaceage.core.scene.Window;
+import com.spaceage.swing.platform.PlatformFactoryImpl;
 
 public class SwingApp implements ActionListener{
 	
 	App app;
 	JFrame window;
-	int width = 640;
-	int height = 480;
 	GamePanel gamePanel;
     Timer timer = new Timer(20, this);
 	
 	
-	public SwingApp(App app) {
+	public SwingApp() {
 		
-		this.app = app;
+		int width = 640;
+		int height = 480;
+		
+		this.app = new App(new PlatformFactoryImpl(), new Window(0, 0, width, height));
 		
 		window = new JFrame("space-age");
 		window.setIgnoreRepaint(true);

@@ -7,7 +7,7 @@ import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.util.Util;
 
-public class Sprite extends AbstractVisualObject {
+public class Sprite implements VisualObject {
 	
 	private String id;
 	private ArrayList<Image> images;
@@ -33,12 +33,10 @@ public class Sprite extends AbstractVisualObject {
 		//single img
 		Image img = Global.factory.createImage(resourcePath);
 		images.add(img);
-		width = img.getWidth();
-		height = img.getHeight();
 		
 	}
 	
-	public boolean isVisible(int globalX, int globalY){
+	public boolean isVisible(Window window){
 		
 		int width = getWidth();
 		int height = getHeight();
@@ -52,19 +50,9 @@ public class Sprite extends AbstractVisualObject {
 	public String getId(){
 		return id;
 	}
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
 	
 	@Override
-	public void draw(int globalX, int globalY, GraphicsManager manager, Object platformGraphics) {
+	public void draw(Window window, GraphicsManager manager, Object platformGraphics) {
 		
 		if(images == null){
 			return;

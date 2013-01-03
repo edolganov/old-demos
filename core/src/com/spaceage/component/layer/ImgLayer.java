@@ -4,32 +4,19 @@ import com.spaceage.app.Global;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Layer;
+import com.spaceage.core.scene.Window;
 
 public class ImgLayer extends Layer {
 	
 	Image img;
-	int imgWith;
-	int imgHeight;
 	
 	public ImgLayer(String resourcePath) {
 		img = Global.factory.createImage(resourcePath);
-		imgWith = img.getWidth();
-		imgHeight = img.getHeight();
-		
-		width = Integer.MAX_VALUE;
-		height = Integer.MAX_VALUE;
 	}
 	
-
-//	@Override
-//	protected int getBackgroundRGBA(int x, int y) {
-//		x = x % imgWith;
-//		y = y % imgHeight;
-//		return img.getRGBA(x, y);
-//	}
-	
 	@Override
-	protected void drawBackgroud(int x, int y, GraphicsManager manager, Object platformGraphics) {
+	protected void drawBackgroud(Window window, GraphicsManager manager, Object platformGraphics) {
+		
 		manager.draw(img, x, y, platformGraphics);
 	}
 

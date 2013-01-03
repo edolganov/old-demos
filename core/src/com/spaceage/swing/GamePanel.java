@@ -37,18 +37,18 @@ public class GamePanel extends JPanel implements GraphicsManager {
         super.paintComponent(g);
     	
     	Scene scene = app.getScene();
-    	scene.draw(0, 0, this, g);
+    	scene.draw(this, g);
 		
         long end = System.currentTimeMillis() - begin;
         g.drawString("render: "+end+"ms; maxFPS: "+(int)(1000/(double)end), 5, 16);
     }
 
 	@Override
-	public void draw(Image image, int x, int y, Object platformGraphics) {
+	public void draw(Image image, int imageStartX, int imageStartY, Object platformGraphics) {
 		Graphics g = (Graphics) platformGraphics;
 		ImageImpl imageImpl = (ImageImpl) image;
 		BufferedImage bufferedImage = imageImpl.getBufferedImage();
-		g.drawImage(bufferedImage, x, y, null);
+		g.drawImage(bufferedImage, imageStartX, imageStartY, null);
 		
 	}
 }
