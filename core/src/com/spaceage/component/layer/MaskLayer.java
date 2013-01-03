@@ -38,7 +38,7 @@ public class MaskLayer extends Layer {
 	
 	@Override
 	protected void drawBackgroud(Window window, GraphicsManager manager, Object platformGraphics) {
-		manager.draw(image, x, y, platformGraphics);
+		//manager.draw(image, x, y, platformGraphics);
 	}
 	
 	
