@@ -7,31 +7,47 @@ import com.spaceage.core.scene.Window;
 public class GlobalSinglePainter {
 	
 	Image img;
+	int width;
+	int height;
 	
 	public GlobalSinglePainter(Image img) {
 		super();
 		this.img = img;
+		this.width = img.getWidth();
+		this.height = img.getHeight();
+		
 	}
 	
 	public void drawImage(int x, int y, Window w, GraphicsManager manager, Object platformGraphics) {
 		
+		if( ! isVisible(x, y, w)){
+			return;
+		}
+		
 		int windowX = x - w.x;
-		if(Math.abs(windowX) >= w.width){
-			return;
-		}
-		
 		int windowY = y - w.y;
-		if(Math.abs(windowY) >= w.height){
-			return;
-		}
-		
 		manager.draw(img, windowX, windowY, platformGraphics);
 	}
 	
 	public boolean isVisible(int x, int y, Window w){
+		
 		int windowX = x - w.x;
+		if(windowX >=0 && windowX > w.width){
+			return false;
+		}
+		if(windowX < 0 && windowX+width < 0){
+			return false;
+		}
+		
 		int windowY = y - w.y;
-		return Math.abs(windowX) < w.width && Math.abs(windowY) < w.height;
+		if(windowY >=0 && windowY > w.height){
+			return false;
+		}
+		if(windowY < 0 && windowY+height < 0){
+			return false;
+		}
+		
+		return true;
 	}
 	
 	

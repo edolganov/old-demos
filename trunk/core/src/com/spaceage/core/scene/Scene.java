@@ -8,9 +8,11 @@ public class Scene {
 	
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
 	private Window window;
+	private ScenePoint windowStartPoint;
 	
-	public Scene(Window window) {
-		this.window = new Window(window);
+	public Scene(Window w) {
+		this.window = new Window(w);
+		windowStartPoint = new ScenePoint(w.x, w.y, 0, 0);
 	}
 	
 	
@@ -27,15 +29,30 @@ public class Scene {
 	}
 
 	public void updateScene() {
+		updateWindowPosition();
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
 			layer.updateState();
 		}
 	}
 	
-	public void moveWindow(int dx, int dy){
-		window.x = window.x + dx;
-		window.y = window.y + dy;
+	private void updateWindowPosition() {
+		windowStartPoint.move();
+		window.x = windowStartPoint.getX();
+		window.y = windowStartPoint.getY();
+	}
+
+
+	public void setWindowVelocity(int dX, int dY){
+		windowStartPoint.setVelocity(dX, dY);
+	}
+	
+	public int getWIndowX(){
+		return window.x;
+	}
+	
+	public int getWindowY(){
+		return window.y;
 	}
 
 
