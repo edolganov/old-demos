@@ -2,7 +2,7 @@ package com.spaceage.core.scene;
 
 import java.util.List;
 
-import com.spaceage.util.ColorUtil;
+import com.spaceage.core.platform.GraphicsManager;
 
 public abstract class Layer extends AbstractVisualObject {
 	
@@ -14,35 +14,37 @@ public abstract class Layer extends AbstractVisualObject {
 	}
 
 
+//	@Override
+//	public int getRGBA(int x, int y){
+//		
+//		int outColor = getBackgroundRGBA(x, y);
+//		outColor = mixWithSprites(outColor, x, y);
+//		return outColor;
+//	}
+	
 	@Override
-	public int getRGBA(int x, int y){
-		
-		int outColor = getBackgroundRGBA(x, y);
-		outColor = mixWithSprites(outColor, x, y);
-		return outColor;
+	public void draw(int x, int y, GraphicsManager manager, Object platformGraphics) {
+		drawBackgroud(x, y, manager, platformGraphics);
+		drawSprites(x, y, manager, platformGraphics);
 	}
+
+	protected abstract void drawBackgroud(int x, int y, GraphicsManager manager, Object platformGraphics);
 	
 	
-	private int mixWithSprites(int outColor, int x, int y) {
+	private void drawSprites(int x, int y, GraphicsManager manager, Object platformGraphics) {
 		
 		List<Sprite> list = sprites.getList();
 		if(list == null){
-			return outColor;
+			return;
 		}
 		
 		for(int i=0; i < list.size(); ++i){
-			Sprite layerSprite = list.get(i);
-			if(layerSprite.isVisible(x, y)){
-				int spriteColor = layerSprite.getRGBA(x, y);
-				outColor = ColorUtil.mixColors(outColor, spriteColor);
+			Sprite sprite = list.get(i);
+			if(sprite.isVisible(x, y)){
+				sprite.draw(x, y, manager, platformGraphics);
 			}
 		}
-		
-		return outColor;
 	}
-
-
-	protected abstract int getBackgroundRGBA(int x, int y);
 	
 	
 	public void updateState() {

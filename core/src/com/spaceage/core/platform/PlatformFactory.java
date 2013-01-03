@@ -10,5 +10,7 @@ public abstract class PlatformFactory {
 	}
 	
 	public abstract Image createImage(InputStream is);
+	
+	public abstract Image createEmptyImage(int width, int height);
 
 }

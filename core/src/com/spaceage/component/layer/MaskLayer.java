@@ -1,13 +1,14 @@
 package com.spaceage.component.layer;
 
 import com.spaceage.app.Global;
+import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Layer;
 import com.spaceage.util.ColorUtil;
 
 public class MaskLayer extends Layer {
 	
-	int[][] img;
+	Image image;
 	
 	
 	public MaskLayer(String resourcePath) {
@@ -15,7 +16,7 @@ public class MaskLayer extends Layer {
 		Image mask = Global.factory.createImage(resourcePath);
 		width = mask.getWidth();
 		height = mask.getHeight();
-		img = new int[width][height];
+		image = Global.factory.createEmptyImage(width, height);
 		
 		for(int x=0; x < width; ++x){
 			for(int y=0; y<height; y++){
@@ -27,18 +28,16 @@ public class MaskLayer extends Layer {
 				} else {
 					imgColor = maskColor;
 				}
-				img[x][y] = imgColor;
+				image.setRGBA(x, y, imgColor);
 			}
 		}
 		
 	}
-
+	
+	
 	@Override
-	protected int getBackgroundRGBA(int x, int y) {
-		if( ! inBounds(x, y)){
-			return 0;
-		}
-		return img[x][y];
+	protected void drawBackgroud(int x, int y, GraphicsManager manager, Object platformGraphics) {
+		manager.draw(image, x, y, platformGraphics);
 	}
 	
 	

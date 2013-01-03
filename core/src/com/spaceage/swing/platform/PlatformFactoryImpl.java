@@ -12,4 +12,9 @@ public class PlatformFactoryImpl extends PlatformFactory {
 		return new ImageImpl(is);
 	}
 
+	@Override
+	public Image createEmptyImage(int width, int height) {
+		return new ImageImpl(width, height);
+	}
+
 }
