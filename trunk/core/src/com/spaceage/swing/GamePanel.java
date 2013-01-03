@@ -1,18 +1,19 @@
 package com.spaceage.swing;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
 import com.spaceage.app.App;
+import com.spaceage.core.platform.GraphicsManager;
+import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Scene;
+import com.spaceage.swing.platform.ImageImpl;
 
 /** @see http://stackoverflow.com/questions/3256941 */
-public class GamePanel extends JPanel {
-
-    private static final int FRAMES = 24;
+public class GamePanel extends JPanel implements GraphicsManager {
 	
 	App app;
 	int width;
@@ -36,16 +37,18 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
     	
     	Scene scene = app.getScene();
-    	
-		for(int x=0; x < width; ++x){
-			for(int y=0; y < height; y++){
-				int rgb = scene.getRGBA(x, y);
-				g.setColor(new Color(rgb));
-				g.drawLine(x, y, x, y);
-			}
-		}
+    	scene.draw(0, 0, this, g);
 		
         long end = System.currentTimeMillis() - begin;
         g.drawString("render: "+end+"ms; maxFPS: "+(int)(1000/(double)end), 5, 16);
     }
+
+	@Override
+	public void draw(Image image, int x, int y, Object platformGraphics) {
+		Graphics g = (Graphics) platformGraphics;
+		ImageImpl imageImpl = (ImageImpl) image;
+		BufferedImage bufferedImage = imageImpl.getBufferedImage();
+		g.drawImage(bufferedImage, x, y, null);
+		
+	}
 }

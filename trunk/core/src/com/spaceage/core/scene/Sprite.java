@@ -3,6 +3,7 @@ package com.spaceage.core.scene;
 import java.util.ArrayList;
 
 import com.spaceage.app.Global;
+import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.util.Util;
 
@@ -61,25 +62,25 @@ public class Sprite extends AbstractVisualObject {
 	public int getHeight() {
 		return height;
 	}
-
+	
 	@Override
-	public int getRGBA(int globalX, int globalY) {
+	public void draw(int globalX, int globalY, GraphicsManager manager, Object platformGraphics) {
 		
 		if(images == null){
-			return 0;
+			return;
 		}
-		
+	
 		int spriteX = getSpriteX(globalX);
 		int spriteY = getSpriteY(globalY);
-		
+	
 		//single img
 		if(images.size() == 1){
-			return images.get(0).getRGBA(spriteX, spriteY);
+			images.get(0).draw(spriteX, spriteY, manager, platformGraphics);
+			return;
 		}
-		
+	
 		//animated sprite
 		//TODO
-		return 0;
 	}
 
 
@@ -129,6 +130,8 @@ public class Sprite extends AbstractVisualObject {
 	public double getSpeedY() {
 		return speedY;
 	}
+
+
 	
 	
 	

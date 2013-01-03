@@ -1,11 +1,13 @@
 package com.spaceage.core.scene;
 
+import com.spaceage.core.platform.GraphicsManager;
+
 public interface VisualObject {
 	
 	int getWidth();
 
 	int getHeight();
 	
-	int getRGBA(int x, int y);
+	void draw(int x, int y, GraphicsManager manager, Object platformGraphics);
 
 }

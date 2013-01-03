@@ -2,7 +2,7 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
-import com.spaceage.util.ColorUtil;
+import com.spaceage.core.platform.GraphicsManager;
 
 public class Scene extends AbstractVisualObject {
 	
@@ -17,25 +17,13 @@ public class Scene extends AbstractVisualObject {
 	public void add(Layer layer){
 		layers.add(layer);
 	}
-
-
+	
 	@Override
-	public int getRGBA(int x, int y){
-		
-		int outColor = ColorUtil.WHITE_COLOR;
-		
+	public void draw(int x, int y, GraphicsManager manager, Object platformGraphics) {
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
-			int layerColor = getLayerRGBA(i, x, y, layer);
-			outColor = ColorUtil.mixColors(outColor, layerColor);
+			layer.draw(x, y, manager, platformGraphics);
 		}
-		
-		return outColor;
-	}
-
-
-	private int getLayerRGBA(int index, int globalX, int globalY, Layer layer) {
-		return layer.getRGBA(globalX, globalY);
 	}
 
 	public void updateScene() {
@@ -44,6 +32,9 @@ public class Scene extends AbstractVisualObject {
 			layer.updateState();
 		}
 	}
+
+
+
 	
 	
 
