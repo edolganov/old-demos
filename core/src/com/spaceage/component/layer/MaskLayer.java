@@ -1,6 +1,7 @@
 package com.spaceage.component.layer;
 
 import com.spaceage.app.Global;
+import com.spaceage.core.painter.GlobalSinglePainter;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Layer;
@@ -9,7 +10,7 @@ import com.spaceage.util.ColorUtil;
 
 public class MaskLayer extends Layer {
 	
-	Image image;
+	GlobalSinglePainter painter; 
 	
 	
 	public MaskLayer(String resourcePath) {
@@ -17,7 +18,7 @@ public class MaskLayer extends Layer {
 		Image mask = Global.factory.createImage(resourcePath);
 		int width = mask.getWidth();
 		int height = mask.getHeight();
-		image = Global.factory.createEmptyImage(width, height);
+		Image image = Global.factory.createEmptyImage(width, height);
 		
 		for(int x=0; x < width; ++x){
 			for(int y=0; y<height; y++){
@@ -33,12 +34,14 @@ public class MaskLayer extends Layer {
 			}
 		}
 		
+		painter = new GlobalSinglePainter(image);
+		
 	}
 	
 	
 	@Override
-	protected void drawBackgroud(Window window, GraphicsManager manager, Object platformGraphics) {
-		//manager.draw(image, x, y, platformGraphics);
+	protected void drawBackgroud(Window w, GraphicsManager manager, Object platformGraphics) {
+		painter.drawImage(0, 0, w, manager, platformGraphics);
 	}
 	
 	

@@ -12,15 +12,6 @@ public abstract class Layer implements VisualObject {
 	public SpritesContainer getSpriteContainer() {
 		return sprites;
 	}
-
-
-//	@Override
-//	public int getRGBA(int x, int y){
-//		
-//		int outColor = getBackgroundRGBA(x, y);
-//		outColor = mixWithSprites(outColor, x, y);
-//		return outColor;
-//	}
 	
 	@Override
 	public void draw(Window window, GraphicsManager manager, Object platformGraphics) {
@@ -28,7 +19,7 @@ public abstract class Layer implements VisualObject {
 		drawSprites(window, manager, platformGraphics);
 	}
 
-	protected abstract void drawBackgroud(Window window, GraphicsManager manager, Object platformGraphics);
+	protected abstract void drawBackgroud(Window w, GraphicsManager manager, Object platformGraphics);
 	
 	
 	private void drawSprites(Window window, GraphicsManager manager, Object platformGraphics) {
