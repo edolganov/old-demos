@@ -40,9 +40,10 @@ public abstract class Layer extends AbstractVisualObject {
 		
 		for(int i=0; i < list.size(); ++i){
 			Sprite sprite = list.get(i);
-			if(sprite.isVisible(x, y)){
-				sprite.draw(x, y, manager, platformGraphics);
-			}
+			//if(sprite.isVisible(x, y)){
+				//sprite.draw(x, y, manager, platformGraphics);
+			//}
+			sprite.draw(x, y, manager, platformGraphics);
 		}
 	}
 	
