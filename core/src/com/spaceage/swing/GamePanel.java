@@ -40,8 +40,8 @@ public class GamePanel extends JPanel implements GraphicsManager {
     	Scene scene = app.getScene();
     	scene.draw(this, g);
 		
-    	g.setColor(new Color(0x33000000, true));
-    	g.fillRect(0, 0, 170, 40);
+    	g.setColor(new Color(0x77000000, true));
+    	g.fillRect(width-170, height - 38, width, height);
     	g.setColor(Color.WHITE);
         
     	long renderTime = System.currentTimeMillis() - begin;
@@ -49,8 +49,8 @@ public class GamePanel extends JPanel implements GraphicsManager {
         
         int maxFPS = (int)(1000/(double)renderTime);
         String maxFPSStr = "maxFPS: "+ (maxFPS > 1000? "1000+" : maxFPS);
-		g.drawString(renderTimeStr+", "+maxFPSStr, 5, 16);
-        g.drawString("position: ["+scene.getWIndowX()+","+scene.getWindowY()+"]", 5, 32);
+		g.drawString(renderTimeStr+", "+maxFPSStr, width - 165, height-20);
+        g.drawString("position: ["+scene.getWIndowX()+","+scene.getWindowY()+"]", width - 165, height-4);
     }
 
 	@Override
