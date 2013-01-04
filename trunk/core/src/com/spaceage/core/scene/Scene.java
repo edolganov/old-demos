@@ -2,16 +2,17 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
+import com.spaceage.app.Global;
 import com.spaceage.core.platform.GraphicsManager;
 
 public class Scene {
 	
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
-	private Window window;
+	private Window w;
 	private ScenePoint windowStartPoint;
 	
-	public Scene(Window w) {
-		this.window = new Window(w);
+	public Scene() {
+		this.w = new Window(Global.initialWindow);
 		windowStartPoint = new ScenePoint(w.x, w.y, 0, 0);
 	}
 	
@@ -23,7 +24,7 @@ public class Scene {
 	public void draw(GraphicsManager manager, Object platformGraphics) {
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
-			Window layerWindow = window; //TODO special for every layer
+			Window layerWindow = w; //TODO special for every layer
 			layer.draw(layerWindow, manager, platformGraphics);
 		}
 	}
@@ -38,8 +39,8 @@ public class Scene {
 	
 	private void updateWindowPosition() {
 		windowStartPoint.move();
-		window.x = windowStartPoint.getX();
-		window.y = windowStartPoint.getY();
+		w.x = windowStartPoint.getX();
+		w.y = windowStartPoint.getY();
 	}
 
 
@@ -48,11 +49,11 @@ public class Scene {
 	}
 	
 	public int getWIndowX(){
-		return window.x;
+		return w.x;
 	}
 	
 	public int getWindowY(){
-		return window.y;
+		return w.y;
 	}
 
 
