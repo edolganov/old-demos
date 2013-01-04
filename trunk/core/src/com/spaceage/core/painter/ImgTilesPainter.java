@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.scene.Window;
+import com.spaceage.core.shape.Window;
 
-public class GlobalTilesPainter {
+public class ImgTilesPainter {
 	
 	Image img;
 	int width;
 	int height;
 	
-	public GlobalTilesPainter(Image img) {
+	public ImgTilesPainter(Image img) {
 		super();
 		this.img = img;
 		this.width = img.getWidth();
 		this.height = img.getHeight();
 	}
 	
-	public void drawImage(int x, int y, Window w, GraphicsManager manager, Object platformGraphics) {
+	public void drawImages(int x, int y, Window w, GraphicsManager manager, Object platformGraphics) {
 		
 		ArrayList<Integer> xList = new ArrayList<Integer>();
 		int positiveX = getPositiveX(w.x - x);

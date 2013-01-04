@@ -3,6 +3,7 @@ package com.spaceage.core.scene;
 import java.util.List;
 
 import com.spaceage.core.platform.GraphicsManager;
+import com.spaceage.core.shape.Window;
 
 public abstract class Layer implements VisualObject {
 	

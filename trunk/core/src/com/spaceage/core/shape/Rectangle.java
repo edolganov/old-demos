@@ -1,17 +1,17 @@
-package com.spaceage.core.scene;
+package com.spaceage.core.shape;
 
-public class Window {
+public class Rectangle {
 	
 	public int x;
 	public int y;
 	public int width;
 	public int height;
 	
-	public Window(Window w){
+	public Rectangle(Rectangle w){
 		this(w.x, w.y, w.width, w.height);
 	}
 	
-	public Window(int x, int y, int width, int height) {
+	public Rectangle(int x, int y, int width, int height) {
 		super();
 		this.x = x;
 		this.y = y;
