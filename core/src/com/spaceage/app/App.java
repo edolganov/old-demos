@@ -12,8 +12,9 @@ public class App {
 	public App(PlatformFactory factory, Window window) {
 		
 		Global.factory = factory;
+		Global.initialWindow = new Window(window);
 		
-		level = new Level_01(window);
+		level = new Level_01();
 		scene = level.getScene();
 		
 	}

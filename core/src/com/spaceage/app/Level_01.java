@@ -5,13 +5,12 @@ import com.spaceage.component.layer.MaskLayer;
 import com.spaceage.core.scene.Scene;
 import com.spaceage.core.scene.Sprite;
 import com.spaceage.core.scene.SpritesContainer;
-import com.spaceage.core.scene.Window;
 
 public class Level_01 {
 	
 	private Scene scene;
 	
-	public Level_01(Window window) {
+	public Level_01() {
 		
 		ImgLayer sky = new ImgLayer("/content/l01/sky.png");
 		
@@ -23,7 +22,7 @@ public class Level_01 {
 		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 600, 420);
 		
 		
-		scene = new Scene(window);
+		scene = new Scene();
 		scene.add(sky);
 		scene.add(level);
 		
