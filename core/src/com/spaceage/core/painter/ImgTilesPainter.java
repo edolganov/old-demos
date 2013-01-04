@@ -1,7 +1,5 @@
 package com.spaceage.core.painter;
 
-import java.util.ArrayList;
-
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.shape.Window;
@@ -21,33 +19,31 @@ public class ImgTilesPainter {
 	
 	public void drawImages(int x, int y, Window w, GraphicsManager manager, Object platformGraphics) {
 		
-		ArrayList<Integer> xList = new ArrayList<Integer>();
 		int positiveX = getPositiveX(w.x - x);
 		int endX = positiveX + w.width;
 		int stepsX = positiveX / width;
 		int startX = width * stepsX;
-		while(startX <= endX){
-			xList.add(startX - positiveX);
-			startX = startX + width;
-		}
 		
-		
-		ArrayList<Integer> yList = new ArrayList<Integer>();
 		int positiveY = getPositiveY(w.y - y);
 		int endY = positiveY + w.height;
 		int stepsY = positiveY / height;
-		int startY = height * stepsY;
-		while(startY <= endY){
-			yList.add(startY - positiveY);
-			startY = startY + height;
-		}
+		int startY;
 		
-		for(int i=0; i< xList.size(); i++){
-			for (int j = 0; j < yList.size(); j++) {
-				int windowX = xList.get(i);
-				int windowY = yList.get(j);
+		int windowX;
+		int windowY;
+		while(startX <= endX){
+			
+			windowX = startX - positiveX;
+			
+			startY = height * stepsY;
+			while(startY <= endY){
+				
+				windowY = startY - positiveY;
 				manager.draw(img, windowX, windowY, platformGraphics);
+				
+				startY = startY + height;
 			}
+			startX = startX + width;
 		}
 	}
 	
@@ -57,7 +53,6 @@ public class ImgTilesPainter {
 		if(wX >= 0){
 			return wX;
 		}
-		
 		int steps = wX / width;
 		int startX = width * steps;
 		if(startX > wX){

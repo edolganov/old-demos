@@ -28,18 +28,14 @@ public class TilesModel {
 	
 	public void findTiles(Rectangle rec, FindTilesListener listener){
 		
-		
-	}
-	
-	public byte getState(int winX, int winY){
-		int x = winX - offsetX;
-		int y = winY - offsetY;
+		int localX = rec.x - offsetX;
 		
 		
-		if(x < 0 || x >= width || y < 0 || y >= height){
-			return EMPTY;
-		}
-		return matrix[x][y];
+		
+		int localY = rec.y - offsetY;
+		
+		
+		
 	}
 
 }
