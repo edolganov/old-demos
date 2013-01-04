@@ -18,7 +18,7 @@ public class Level_01 {
 		TilesLayer level = new TilesLayer(0, 0, new Level1Painter(), "/content/l01/level-1-model.png");
 		SpritesContainer sprites = level.getSpriteContainer();
 		
-		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 10, 280);
+		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 20, 310);
 		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 330);
 		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 600, 420);
 		
