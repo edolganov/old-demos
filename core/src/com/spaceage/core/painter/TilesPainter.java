@@ -23,6 +23,7 @@ public abstract class TilesPainter {
 
 			@Override
 			public void onFoundTile(int x, int y, int width, int height, byte state) {
+				
 				if(state == TilesModel.EMPTY){
 					return;
 				}
