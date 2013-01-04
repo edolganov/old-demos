@@ -27,8 +27,8 @@ public class Level_01 {
 		scene.add(sky);
 		scene.add(level);
 		
-		player.setVelocity(-10, 0);
-		scene.setWindowVelocity(-10, 0);
+		player.setVelocity(10, 0);
+		scene.setWindowVelocity(10, 0);
 	}
 
 	public Scene getScene() {

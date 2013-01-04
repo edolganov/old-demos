@@ -57,13 +57,13 @@ public class TilesModel {
 		int tileY;
 		while(startX <= endX && modelX < matrixWidth){
 			
-			tileX = startX - positiveX;
+			tileX = startX - localX;
 			
 			startY = tileHeight * stepsY;
 			modelY = stepsY;
 			while(startY <= endY && modelY < matrixHeight){
 				
-				tileY = startY - positiveY;
+				tileY = startY - localY;
 				
 				byte state = matrix[modelX][modelY];
 				listener.onFoundTile(tileX, tileY, tileWidth, recHeight, state);
@@ -89,7 +89,7 @@ public class TilesModel {
 		if(x >=0){
 			return recWidth;
 		}
-		return recWidth - x;
+		return recWidth + x;
 	}
 	
 	private int getPositiveY(int y) {
@@ -101,7 +101,7 @@ public class TilesModel {
 		if(y >=0){
 			return recHeight;
 		}
-		return recHeight - y;
+		return recHeight + y;
 	}
 
 }
