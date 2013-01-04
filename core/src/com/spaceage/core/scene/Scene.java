@@ -2,8 +2,9 @@ package com.spaceage.core.scene;
 
 import java.util.ArrayList;
 
-import com.spaceage.app.Global;
+import com.spaceage.app.G;
 import com.spaceage.core.platform.GraphicsManager;
+import com.spaceage.core.shape.Window;
 
 public class Scene {
 	
@@ -12,7 +13,7 @@ public class Scene {
 	private ScenePoint windowStartPoint;
 	
 	public Scene() {
-		this.w = new Window(Global.initialWindow);
+		this.w = new Window(G.initialWindow());
 		windowStartPoint = new ScenePoint(w.x, w.y, 0, 0);
 	}
 	

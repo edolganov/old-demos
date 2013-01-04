@@ -2,15 +2,15 @@ package com.spaceage.core.painter;
 
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.scene.Window;
+import com.spaceage.core.shape.Window;
 
-public class GlobalSinglePainter {
+public class ImgSinglePainter {
 	
 	Image img;
 	int width;
 	int height;
 	
-	public GlobalSinglePainter(Image img) {
+	public ImgSinglePainter(Image img) {
 		super();
 		this.img = img;
 		this.width = img.getWidth();

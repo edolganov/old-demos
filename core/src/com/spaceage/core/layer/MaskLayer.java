@@ -1,24 +1,24 @@
-package com.spaceage.component.layer;
+package com.spaceage.core.layer;
 
-import com.spaceage.app.Global;
-import com.spaceage.core.painter.GlobalSinglePainter;
+import com.spaceage.app.G;
+import com.spaceage.core.painter.ImgSinglePainter;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Layer;
-import com.spaceage.core.scene.Window;
+import com.spaceage.core.shape.Window;
 import com.spaceage.util.ColorUtil;
 
 public class MaskLayer extends Layer {
 	
-	GlobalSinglePainter painter; 
+	ImgSinglePainter painter; 
 	
 	
 	public MaskLayer(String resourcePath) {
 		
-		Image mask = Global.factory.createImage(resourcePath);
+		Image mask = G.factory().createImage(resourcePath);
 		int width = mask.getWidth();
 		int height = mask.getHeight();
-		Image image = Global.factory.createEmptyImage(width, height);
+		Image image = G.factory().createEmptyImage(width, height);
 		
 		for(int x=0; x < width; ++x){
 			for(int y=0; y<height; y++){
@@ -34,7 +34,7 @@ public class MaskLayer extends Layer {
 			}
 		}
 		
-		painter = new GlobalSinglePainter(image);
+		painter = new ImgSinglePainter(image);
 		
 	}
 	

@@ -1,6 +1,6 @@
 package com.spaceage.core.scene;
 
-import com.spaceage.app.Global;
+import com.spaceage.app.G;
 
 public class ScenePoint {
 	
@@ -22,8 +22,8 @@ public class ScenePoint {
 	}
 	
 	public void setVelocity(int dX, int dY) {
-		this.dX = dX * Global.slowdownConst;
-		this.dY = dY * Global.slowdownConst;
+		this.dX = dX * G.slowdownConst();
+		this.dY = dY * G.slowdownConst();
 	}
 	
 	

@@ -1,7 +1,7 @@
 package com.spaceage.app;
 
-import com.spaceage.component.layer.ImgLayer;
-import com.spaceage.component.layer.MaskLayer;
+import com.spaceage.core.layer.ImgLayer;
+import com.spaceage.core.layer.MaskLayer;
 import com.spaceage.core.scene.Scene;
 import com.spaceage.core.scene.Sprite;
 import com.spaceage.core.scene.SpritesContainer;
