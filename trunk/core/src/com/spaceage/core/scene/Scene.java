@@ -3,8 +3,8 @@ package com.spaceage.core.scene;
 import java.util.ArrayList;
 
 import com.spaceage.app.G;
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.GraphicsManager;
-import com.spaceage.core.shape.Window;
 
 public class Scene {
 	
@@ -45,7 +45,7 @@ public class Scene {
 	}
 
 
-	public void setWindowVelocity(int dX, int dY){
+	public void setWindowVelocity(double dX, double dY){
 		windowStartPoint.setVelocity(dX, dY);
 	}
 	

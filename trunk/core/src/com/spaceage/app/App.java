@@ -1,8 +1,8 @@
 package com.spaceage.app;
 
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.PlatformFactory;
 import com.spaceage.core.scene.Scene;
-import com.spaceage.core.shape.Window;
 
 public class App {
 	

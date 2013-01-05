@@ -2,8 +2,9 @@ package com.spaceage.core.scene;
 
 import java.util.List;
 
+import com.spaceage.app.G;
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.GraphicsManager;
-import com.spaceage.core.shape.Window;
 
 public abstract class Layer implements VisualObject {
 	
@@ -48,8 +49,15 @@ public abstract class Layer implements VisualObject {
 		//move all sprites
 		for(int i=0; i < list.size(); ++i){
 			Sprite sprite = list.get(i);
-			sprite.move();
+			moveSprite(sprite);
 		}
+	}
+
+	private void moveSprite(Sprite sprite) {
+		ScenePoint startPoint = sprite.getStartPoint();
+		startPoint.slowdownAccelerationX();
+		startPoint.appendVelocity(0, G.gravityConst());
+		startPoint.move();
 	}
 
 }

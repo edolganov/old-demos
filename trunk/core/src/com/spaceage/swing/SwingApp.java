@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import com.spaceage.app.App;
-import com.spaceage.core.shape.Window;
+import com.spaceage.core.basic.Window;
 import com.spaceage.swing.platform.PlatformFactoryImpl;
 
 public class SwingApp implements ActionListener{

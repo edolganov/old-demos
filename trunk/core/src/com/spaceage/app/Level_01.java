@@ -18,17 +18,18 @@ public class Level_01 {
 		TilesLayer level = new TilesLayer(0, 0, new Level1Painter(), "/content/l01/level-1-model.png", 10, 10);
 		SpritesContainer sprites = level.getSpriteContainer();
 		
-		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 20, 310);
-		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 330);
-		sprites.createSprite("/content/l01/sprite-ex-02-1.png", 600, 420);
+		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 40, 90);
+		player.getStartPoint().setVelocity(2, -10);
+		
+		//sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 0);
+		//sprites.createSprite("/content/l01/sprite-ex-02-1.png", 600, 0);
 		
 		
 		scene = new Scene();
 		scene.add(sky);
 		scene.add(level);
 		
-		player.setVelocity(10, 0);
-		scene.setWindowVelocity(10, 0);
+		scene.setWindowVelocity(0, 0);
 	}
 
 	public Scene getScene() {

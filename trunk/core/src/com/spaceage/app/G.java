@@ -1,7 +1,7 @@
 package com.spaceage.app;
 
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.PlatformFactory;
-import com.spaceage.core.shape.Window;
 
 /**
  * Global
@@ -10,11 +10,18 @@ public class G {
 	
 	static PlatformFactory factory;
 	
-	static double slowdownConst = 0.1;
-	
 	static Window initialWindow;
 	
-	static int tilesResolution = 10;
+	//world const
+	static double slowdownConst = 1; //no slowdown
+	
+	static double gravityConst = 0.35;
+	
+	static double slowdownAccelerationX = 0.01;
+	
+	static double maxVelocity = 30;
+	
+	static double maxAcceleraton = 30;
 	
 	
 
@@ -29,10 +36,22 @@ public class G {
 	public static Window initialWindow() {
 		return initialWindow;
 	}
-
-//	public static int tilesResolution() {
-//		return tilesResolution;
-//	}
+	
+	public static double gravityConst(){
+		return gravityConst;
+	}
+	
+	public static double slowdownAccelerationX(){
+		return slowdownAccelerationX;
+	}
+	
+	public 	static double maxVelocity(){
+		return maxVelocity;
+	}
+	
+	public 	static double maxAcceleraton(){
+		return maxAcceleraton;
+	}
 	
 	
 
