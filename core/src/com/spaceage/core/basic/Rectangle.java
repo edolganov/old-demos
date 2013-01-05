@@ -1,4 +1,4 @@
-package com.spaceage.core.shape;
+package com.spaceage.core.basic;
 
 public class Rectangle {
 	

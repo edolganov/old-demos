@@ -1,11 +1,11 @@
 package com.spaceage.core.layer;
 
 import com.spaceage.app.G;
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.painter.TilesPainter;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.scene.Layer;
-import com.spaceage.core.shape.Window;
 import com.spaceage.core.tiles.TilesModel;
 import com.spaceage.util.ColorUtil;
 

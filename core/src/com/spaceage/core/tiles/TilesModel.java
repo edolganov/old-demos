@@ -1,6 +1,6 @@
 package com.spaceage.core.tiles;
 
-import com.spaceage.core.shape.Rectangle;
+import com.spaceage.core.basic.Rectangle;
 
 public class TilesModel {
 	

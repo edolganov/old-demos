@@ -3,21 +3,21 @@ package com.spaceage.core.scene;
 import java.util.ArrayList;
 
 import com.spaceage.app.G;
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.painter.ImgSinglePainter;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.shape.Window;
 import com.spaceage.util.Util;
 
 public class Sprite implements VisualObject {
 	
 	private String id = Util.randomUUID();;
 	private ArrayList<ImgSinglePainter> painters = new ArrayList<ImgSinglePainter>();
-	private ScenePoint spritePoint;
+	private ScenePoint startPoint;
 	
 	
 	public Sprite(String resourcePath, int x, int y){
-		spritePoint = new ScenePoint(x, y, 0, 0);
+		startPoint = new ScenePoint(x, y, 0, 0);
 		//single img
 		Image img = G.factory().createImage(resourcePath);
 		painters.add(new ImgSinglePainter(img));
@@ -31,8 +31,8 @@ public class Sprite implements VisualObject {
 		}
 		
 		ImgSinglePainter painter = painters.get(0);
-		int x = spritePoint.getX();
-		int y = spritePoint.getY();
+		int x = startPoint.getX();
+		int y = startPoint.getY();
 		return painter.isVisible(x, y, w);
 		
 	}
@@ -50,19 +50,14 @@ public class Sprite implements VisualObject {
 		
 		//TODO animated sprite
 		ImgSinglePainter painter = painters.get(0);
-		int x = spritePoint.getX();
-		int y = spritePoint.getY();
+		int x = startPoint.getX();
+		int y = startPoint.getY();
 		painter.drawImage(x, y, w, manager, platformGraphics);
 
 	}
-
-	public void setVelocity(int dX, int dY) {
-		spritePoint.setVelocity(dX, dY);
-	}
-
-
-	public void move() {
-		spritePoint.move();
+	
+	public ScenePoint getStartPoint(){
+		return startPoint;
 	}
 	
 	

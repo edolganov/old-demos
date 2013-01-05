@@ -1,8 +1,8 @@
 package com.spaceage.core.painter;
 
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.platform.Image;
-import com.spaceage.core.shape.Window;
 import com.spaceage.core.tiles.FindTilesListener;
 import com.spaceage.core.tiles.TilesModel;
 

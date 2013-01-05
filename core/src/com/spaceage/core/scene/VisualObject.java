@@ -1,7 +1,7 @@
 package com.spaceage.core.scene;
 
+import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.GraphicsManager;
-import com.spaceage.core.shape.Window;
 
 public interface VisualObject {
 	

@@ -25,23 +25,83 @@ public class ScenePoint {
 		this.dY = dY;
 	}
 	
-	public void setVelocity(int dX, int dY) {
+	public void setVelocity(double dX, double dY) {
 		this.dX = dX * G.slowdownConst();
 		this.dY = dY * G.slowdownConst();
 	}
 	
-	public void setAcceleration(int ddX, int ddY){
+	public void appendVelocity(double dX, double dY) {
+		this.dX += dX * G.slowdownConst();
+		this.dY += dY * G.slowdownConst();
+	}
+	
+	public void setAcceleration(double ddX, double ddY){
 		this.ddX = ddX * G.slowdownConst();
 		this.ddY = ddY * G.slowdownConst();
 	}
 	
+	public void appendAcceleration(double ddX, double ddY){
+		this.ddX += ddX * G.slowdownConst();
+		this.ddY += ddY * G.slowdownConst();
+	}
 	
-	public void move() {
-		x = x + dX;
-		y = y + dY;
+	public void slowdownAccelerationX() {
+		if(ddX > G.slowdownAccelerationX()){
+			ddX -= G.slowdownAccelerationX();
+		} 
+		else if(ddX < -G.slowdownAccelerationX()){
+			ddX += G.slowdownAccelerationX(); 
+		}
+		else {
+			ddX = 0;
+		}
+		
 	}
 	
 	
+	public void move() {
+		
+		limitVelocityAndAcceleration();
+		
+		dX += ddX;
+		dY += ddY;
+		
+		x += dX;
+		y += dY;
+	}
+	
+	
+	private void limitVelocityAndAcceleration() {
+		
+		if(ddX > G.maxAcceleraton()){
+			ddX = G.maxAcceleraton();
+		}
+		else if(ddX < -G.maxAcceleraton()){
+			ddX = -G.maxAcceleraton();
+		}
+		
+		if(ddY > G.maxAcceleraton()){
+			ddY = G.maxAcceleraton();
+		}
+		else if(ddY < -G.maxAcceleraton()){
+			ddY = -G.maxAcceleraton();
+		}
+		
+		if(dX > G.maxVelocity()){
+			dX = G.maxVelocity();
+		}
+		else if(dX < -G.maxVelocity()){
+			dX = -G.maxVelocity();
+		}
+		
+		if(dY > G.maxVelocity()){
+			dY = G.maxVelocity();
+		}
+		else if(dY < -G.maxVelocity()){
+			dY = -G.maxVelocity();
+		}
+	}
+
 	public int getX() {
 		return (int)x;
 	}
@@ -64,6 +124,14 @@ public class ScenePoint {
 
 	public double getVelocityY() {
 		return dY;
+	}
+	
+	public double getAccelerationX(){
+		return ddX;
+	}
+	
+	public double getAccelerationY(){
+		return ddY;
 	}
 	
 	
