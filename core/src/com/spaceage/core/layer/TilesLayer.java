@@ -14,20 +14,20 @@ public class TilesLayer extends Layer {
 	TilesModel tiles;
 	TilesPainter painter;
 	
-	public TilesLayer(int offsetX, int offsetY, TilesPainter painter, int width, int height) {
+	public TilesLayer(int offsetX, int offsetY, TilesPainter painter, int width, int height, int tileWidth, int tileHeight) {
 
-		tiles = new TilesModel(offsetX, offsetY, width, height);
+		tiles = new TilesModel(offsetX, offsetY, width, height, tileWidth, tileHeight);
 		painter.setModel(tiles);
 		this.painter = painter;
 	}
 	
-	public TilesLayer(int offsetX, int offsetY, TilesPainter painter, String modelImgPath) {
+	public TilesLayer(int offsetX, int offsetY, TilesPainter painter, String modelImgPath, int tileWidth, int tileHeight) {
 		
 		Image modelImg = G.factory().createImage(modelImgPath);
 		int width = modelImg.getWidth();
 		int height = modelImg.getHeight();
 		
-		tiles = new TilesModel(offsetX, offsetY, width, height);
+		tiles = new TilesModel(offsetX, offsetY, width, height, tileWidth, tileHeight);
 		for(int x=0; x < width; ++x){
 			for(int y=0; y<height; y++){
 				
