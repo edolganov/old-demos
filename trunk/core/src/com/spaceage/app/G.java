@@ -30,9 +30,9 @@ public class G {
 		return initialWindow;
 	}
 
-	public static int tilesResolution() {
-		return tilesResolution;
-	}
+//	public static int tilesResolution() {
+//		return tilesResolution;
+//	}
 	
 	
 

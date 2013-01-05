@@ -15,7 +15,7 @@ public class Level_01 {
 		
 		ImgLayer sky = new ImgLayer("/content/l01/sky.png");
 		
-		TilesLayer level = new TilesLayer(0, 0, new Level1Painter(), "/content/l01/level-1-model.png");
+		TilesLayer level = new TilesLayer(0, 0, new Level1Painter(), "/content/l01/level-1-model.png", 10, 10);
 		SpritesContainer sprites = level.getSpriteContainer();
 		
 		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 20, 310);

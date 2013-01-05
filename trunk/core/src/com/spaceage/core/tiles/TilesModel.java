@@ -1,6 +1,5 @@
 package com.spaceage.core.tiles;
 
-import com.spaceage.app.G;
 import com.spaceage.core.shape.Rectangle;
 
 public class TilesModel {
@@ -16,16 +15,15 @@ public class TilesModel {
 	int matrixWidth;
 	int matrixHeight;
 	
-	public TilesModel(int offsetX, int offsetY, int matrixWidth, int matrixHeight) {
+	public TilesModel(int offsetX, int offsetY, int matrixWidth, int matrixHeight, int tileWidth, int tileHeight) {
 		matrix = new byte[matrixWidth][matrixHeight];
 		this.matrixWidth = matrixWidth;
 		this.matrixHeight = matrixHeight;
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
 		
-		int tilesResolution = G.tilesResolution();
-		this.tileWidth = tilesResolution;
-		this.tileHeight = tilesResolution;
+		this.tileWidth = tileWidth;
+		this.tileHeight = tileHeight;
 	}
 
 	public void setGround(int modelX, int modelY) {
@@ -66,7 +64,7 @@ public class TilesModel {
 				tileY = startY - localY;
 				
 				byte state = matrix[modelX][modelY];
-				listener.onFoundTile(tileX, tileY, tileWidth, recHeight, state);
+				listener.onFoundTile(tileX, tileY, tileWidth, tileHeight, state);
 				
 				startY = startY + tileHeight;
 				modelY++;

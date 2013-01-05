@@ -12,6 +12,10 @@ public class ScenePoint {
 	private double dX;
 	private double dY;
 	
+	//acceleration
+	private double ddX;
+	private double ddY;
+	
 	
 	public ScenePoint(double x, double y, double dX, double dY) {
 		super();
@@ -24,6 +28,11 @@ public class ScenePoint {
 	public void setVelocity(int dX, int dY) {
 		this.dX = dX * G.slowdownConst();
 		this.dY = dY * G.slowdownConst();
+	}
+	
+	public void setAcceleration(int ddX, int ddY){
+		this.ddX = ddX * G.slowdownConst();
+		this.ddY = ddY * G.slowdownConst();
 	}
 	
 	
