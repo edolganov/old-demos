@@ -7,7 +7,7 @@ import com.spaceage.core.tiles.TilesModel;
 
 public class Level1Painter extends TilesPainter {
 	
-	Image graundBlock = G.factory().createImage("/content/tiles/ground-01.png");
+	Image graundBlock = G.factory.createImage("/content/tiles/ground-01.png");
 
 	@Override
 	protected Image getTileImg(int x, int y, int width, int height, byte state) {

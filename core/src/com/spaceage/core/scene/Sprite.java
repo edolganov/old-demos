@@ -20,7 +20,7 @@ public class Sprite implements VisualObject {
 	public Sprite(String resourcePath, int x, int y){
 		startPoint = new ScenePoint(x, y, 0, 0);
 		//single img
-		Image img = G.factory().createImage(resourcePath);
+		Image img = G.factory.createImage(resourcePath);
 		painters.add(new ImgSinglePainter(img));
 		
 	}
@@ -63,7 +63,7 @@ public class Sprite implements VisualObject {
 		
 		
 		
-		if(G.showVelocityVector()){
+		if(G.showVelocityVector){
 			int width = painter.getWidth();
 			int height = painter.getHeight();
 			int vX1 = x + width/2;

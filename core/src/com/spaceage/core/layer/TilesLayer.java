@@ -22,7 +22,7 @@ public class TilesLayer extends Layer {
 	
 	public TilesLayer(int offsetX, int offsetY, TilesPainter painter, String modelImgPath, int tileWidth, int tileHeight) {
 		
-		Image modelImg = G.factory().createImage(modelImgPath);
+		Image modelImg = G.factory.createImage(modelImgPath);
 		int width = modelImg.getWidth();
 		int height = modelImg.getHeight();
 		

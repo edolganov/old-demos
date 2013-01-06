@@ -1,6 +1,5 @@
 package com.spaceage.core.scene;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.spaceage.app.G;
@@ -10,6 +9,7 @@ import com.spaceage.core.platform.GraphicsManager;
 import com.spaceage.core.tiles.FoundedTiles;
 import com.spaceage.core.tiles.FoundedTiles.TileInfo;
 import com.spaceage.core.tiles.TilesModel;
+import com.spaceage.util.MathUtil;
 
 public abstract class Layer implements VisualObject {
 	
@@ -56,42 +56,74 @@ public abstract class Layer implements VisualObject {
 		for(int i=0; i < list.size(); ++i){
 			Sprite sprite = list.get(i);
 			moveSprite(sprite, w);
-			fixByTiles(sprite, w);
 		}
 	}
 
 	private void moveSprite(Sprite sprite, Window w) {
 		
 		ScenePoint startPoint = sprite.getStartPoint();
+		
+		int oldX = startPoint.getX();
+		int oldY = startPoint.getY();
+		
 		startPoint.slowdownAccelerationX();
-		startPoint.appendVelocity(0, G.gravityConst());
+		startPoint.appendVelocity(0, G.gravityConst);
 		startPoint.move();
+		
+		fixByTiles(oldX, oldY, sprite, w);
 		
 	}
 	
-	private void fixByTiles(Sprite sprite, Window w) {
+	private void fixByTiles(int oldX, int oldY, Sprite sprite, Window w) {
 		
 		if(tiles == null){
 			return;
 		}
 		
 		ScenePoint startPoint = sprite.getStartPoint();
-			
-		int x = startPoint.getX();
-		int y = startPoint.getY();
-		int width = sprite.getWidth();
-		int height = sprite.getHeight();
 		
-		Rectangle rec = new Rectangle(x, y, width, height);
-		FoundedTiles founded = tiles.findTiles(rec);
-		ArrayList<TileInfo> list = founded.list;
-		if(list.size() == 0){
-			return;
+		//check x
+		int x = startPoint.getX();
+        int fromX = MathUtil.getMinVal(oldX, x);
+        int width = MathUtil.getLength(oldX, x);
+        Rectangle xRec = new Rectangle(fromX, oldY, width, 1);
+		FoundedTiles tilesX = tiles.findTiles(xRec);
+		if(tilesX.list.size() > 0){
+			float velocityX = startPoint.getVelocityX();
+			if(velocityX > 0){
+				TileInfo firstTile = tilesX.list.get(0);
+				startPoint.setX(firstTile.x - sprite.getWidth());
+			} else {
+				TileInfo lastTile = tilesX.list.get(tilesX.list.size()-1);
+				startPoint.setX(lastTile.x + tilesX.tileWidth + 1);
+			}
+			startPoint.setVelocityX(0);
 		}
 		
-		float velocityX = startPoint.getVelocityX();
-		float velocityY = startPoint.getVelocityY();
+		//check y
+		int updatedX = startPoint.getX();
+		int y = startPoint.getY();
+		if(y >= 390){
+			"".toString();
+		}
+        int fromY = MathUtil.getMinVal(oldY, y);
+        int height = MathUtil.getLength(oldY, y);
+        Rectangle yRec = new Rectangle(updatedX, fromY, 1, height);
+		FoundedTiles tilesY = tiles.findTiles(yRec);
+		if(tilesY.list.size() > 0){
+			float velocityY = startPoint.getVelocityY();
+			if(velocityY > 0){
+				TileInfo firstTile = tilesY.list.get(0);
+				startPoint.setY(firstTile.y - sprite.getHeight());
+			} else {
+				TileInfo lastTile = tilesY.list.get(tilesY.list.size()-1);
+				startPoint.setY(lastTile.y + tilesY.tileHeight + 1);
+			}
+			startPoint.setVelocityY(0);
+		}
 		
 	}
+
+
 
 }

@@ -15,10 +15,10 @@ public class MaskLayer extends Layer {
 	
 	public MaskLayer(String resourcePath) {
 		
-		Image mask = G.factory().createImage(resourcePath);
+		Image mask = G.factory.createImage(resourcePath);
 		int width = mask.getWidth();
 		int height = mask.getHeight();
-		Image image = G.factory().createEmptyImage(width, height);
+		Image image = G.factory.createEmptyImage(width, height);
 		
 		for(int x=0; x < width; ++x){
 			for(int y=0; y<height; y++){

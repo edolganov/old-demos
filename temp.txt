@@ -1,4 +1,18 @@
-    /**
+// line up with the tile boundary
+if (dx > 0) {
+	creature.setX(
+		TileMapRenderer.tilesToPixels(tile.x) -
+		creature.getWidth());
+}
+else if (dx < 0) {
+	creature.setX(
+		TileMapRenderer.tilesToPixels(tile.x + 1));
+}
+
+
+	
+	
+	/**
      * Returns the red component in the range 0-255 in the default sRGB
      * space.
      * @return the red component.

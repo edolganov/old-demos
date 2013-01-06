@@ -26,31 +26,39 @@ public class ScenePoint {
 	}
 	
 	public void setVelocity(float dX, float dY) {
-		this.dX = dX * G.slowdownConst();
-		this.dY = dY * G.slowdownConst();
+		setVelocityX(dX);
+		setVelocityY(dY);
+	}
+	
+	public void setVelocityX(float dX) {
+		this.dX = dX * G.slowdownConst;
+	}
+	
+	public void setVelocityY(float dY) {
+		this.dY = dY * G.slowdownConst;
 	}
 	
 	public void appendVelocity(float dX, float dY) {
-		this.dX += dX * G.slowdownConst();
-		this.dY += dY * G.slowdownConst();
+		this.dX += dX * G.slowdownConst;
+		this.dY += dY * G.slowdownConst;
 	}
 	
 	public void setAcceleration(float ddX, float ddY){
-		this.ddX = ddX * G.slowdownConst();
-		this.ddY = ddY * G.slowdownConst();
+		this.ddX = ddX * G.slowdownConst;
+		this.ddY = ddY * G.slowdownConst;
 	}
 	
 	public void appendAcceleration(float ddX, float ddY){
-		this.ddX += ddX * G.slowdownConst();
-		this.ddY += ddY * G.slowdownConst();
+		this.ddX += ddX * G.slowdownConst;
+		this.ddY += ddY * G.slowdownConst;
 	}
 	
 	public void slowdownAccelerationX() {
-		if(ddX > G.slowdownAccelerationX()){
-			ddX -= G.slowdownAccelerationX();
+		if(ddX > G.slowdownAccelerationX){
+			ddX -= G.slowdownAccelerationX;
 		} 
-		else if(ddX < -G.slowdownAccelerationX()){
-			ddX += G.slowdownAccelerationX(); 
+		else if(ddX < -G.slowdownAccelerationX){
+			ddX += G.slowdownAccelerationX; 
 		}
 		else {
 			ddX = 0;
@@ -73,32 +81,32 @@ public class ScenePoint {
 	
 	private void limitVelocityAndAcceleration() {
 		
-		if(ddX > G.maxAcceleraton()){
-			ddX = G.maxAcceleraton();
+		if(ddX > G.maxAcceleraton){
+			ddX = G.maxAcceleraton;
 		}
-		else if(ddX < -G.maxAcceleraton()){
-			ddX = -G.maxAcceleraton();
-		}
-		
-		if(ddY > G.maxAcceleraton()){
-			ddY = G.maxAcceleraton();
-		}
-		else if(ddY < -G.maxAcceleraton()){
-			ddY = -G.maxAcceleraton();
+		else if(ddX < -G.maxAcceleraton){
+			ddX = -G.maxAcceleraton;
 		}
 		
-		if(dX > G.maxVelocity()){
-			dX = G.maxVelocity();
+		if(ddY > G.maxAcceleraton){
+			ddY = G.maxAcceleraton;
 		}
-		else if(dX < -G.maxVelocity()){
-			dX = -G.maxVelocity();
+		else if(ddY < -G.maxAcceleraton){
+			ddY = -G.maxAcceleraton;
 		}
 		
-		if(dY > G.maxVelocity()){
-			dY = G.maxVelocity();
+		if(dX > G.maxVelocity){
+			dX = G.maxVelocity;
 		}
-		else if(dY < -G.maxVelocity()){
-			dY = -G.maxVelocity();
+		else if(dX < -G.maxVelocity){
+			dX = -G.maxVelocity;
+		}
+		
+		if(dY > G.maxVelocity){
+			dY = G.maxVelocity;
+		}
+		else if(dY < -G.maxVelocity){
+			dY = -G.maxVelocity;
 		}
 	}
 
@@ -109,13 +117,13 @@ public class ScenePoint {
 	public int getY() {
 		return (int)y;
 	}
-	
-	public float getRealX() {
-		return x;
+
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public float getRealY() {
-		return y;
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	public float getVelocityX() {
