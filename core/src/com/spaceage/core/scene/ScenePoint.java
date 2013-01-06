@@ -5,19 +5,19 @@ import com.spaceage.app.G;
 public class ScenePoint {
 	
 	//position
-	private double x;
-	private double y;
+	private float x;
+	private float y;
 	
 	//velocity
-	private double dX;
-	private double dY;
+	private float dX;
+	private float dY;
 	
 	//acceleration
-	private double ddX;
-	private double ddY;
+	private float ddX;
+	private float ddY;
 	
 	
-	public ScenePoint(double x, double y, double dX, double dY) {
+	public ScenePoint(float x, float y, float dX, float dY) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -25,22 +25,22 @@ public class ScenePoint {
 		this.dY = dY;
 	}
 	
-	public void setVelocity(double dX, double dY) {
+	public void setVelocity(float dX, float dY) {
 		this.dX = dX * G.slowdownConst();
 		this.dY = dY * G.slowdownConst();
 	}
 	
-	public void appendVelocity(double dX, double dY) {
+	public void appendVelocity(float dX, float dY) {
 		this.dX += dX * G.slowdownConst();
 		this.dY += dY * G.slowdownConst();
 	}
 	
-	public void setAcceleration(double ddX, double ddY){
+	public void setAcceleration(float ddX, float ddY){
 		this.ddX = ddX * G.slowdownConst();
 		this.ddY = ddY * G.slowdownConst();
 	}
 	
-	public void appendAcceleration(double ddX, double ddY){
+	public void appendAcceleration(float ddX, float ddY){
 		this.ddX += ddX * G.slowdownConst();
 		this.ddY += ddY * G.slowdownConst();
 	}
@@ -110,27 +110,27 @@ public class ScenePoint {
 		return (int)y;
 	}
 	
-	public double getRealX() {
+	public float getRealX() {
 		return x;
 	}
 
-	public double getRealY() {
+	public float getRealY() {
 		return y;
 	}
 
-	public double getVelocityX() {
+	public float getVelocityX() {
 		return dX;
 	}
 
-	public double getVelocityY() {
+	public float getVelocityY() {
 		return dY;
 	}
 	
-	public double getAccelerationX(){
+	public float getAccelerationX(){
 		return ddX;
 	}
 	
-	public double getAccelerationY(){
+	public float getAccelerationY(){
 		return ddY;
 	}
 	

@@ -34,7 +34,7 @@ public class Scene {
 		updateWindowPosition();
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
-			layer.updateState();
+			layer.updateState(w);
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class Scene {
 	}
 
 
-	public void setWindowVelocity(double dX, double dY){
+	public void setWindowVelocity(float dX, float dY){
 		windowStartPoint.setVelocity(dX, dY);
 	}
 	

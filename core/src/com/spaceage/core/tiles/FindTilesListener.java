@@ -1,7 +1,15 @@
 package com.spaceage.core.tiles;
 
-public interface FindTilesListener {
+public abstract class FindTilesListener {
 	
-	void onFoundTile(int x, int y, int width, int height, byte state);
+	public boolean processEmpty = false;
+	
+	public FindTilesListener() {}
+	
+	public FindTilesListener(boolean processEmpty) {
+		this.processEmpty = processEmpty;
+	}
+
+	public abstract void onFoundTile(int x, int y, int width, int height, byte state);
 
 }

@@ -7,8 +7,8 @@ public class Rectangle {
 	public int width;
 	public int height;
 	
-	public Rectangle(Rectangle w){
-		this(w.x, w.y, w.width, w.height);
+	public Rectangle(Rectangle rec){
+		this(rec.x, rec.y, rec.width, rec.height);
 	}
 	
 	public Rectangle(int x, int y, int width, int height) {
