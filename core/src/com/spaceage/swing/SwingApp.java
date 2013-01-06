@@ -20,14 +20,22 @@ public class SwingApp implements ActionListener{
 	JFrame window;
 	GamePanel gamePanel;
     Timer timer = new Timer(20, this);
-	
-	
-	public SwingApp() {
-		
+    
+    public SwingApp() {
 		int width = 640;
 		int height = 480;
-		
-		this.app = new App(new PlatformFactoryImpl(), new Window(0, 0, width, height));
+		App app = new App(new PlatformFactoryImpl(), new Window(0, 0, width, height));
+		init(app, width, height);
+	}
+	
+	
+	public SwingApp(App app, int width, int height) {
+		init(app, width, height);
+	}
+
+	private void init(App app, int width, int height) {
+
+		this.app = app;
 		
 		window = new JFrame("space-age");
 		window.setIgnoreRepaint(true);
@@ -62,6 +70,7 @@ public class SwingApp implements ActionListener{
 			}
 		});
 	}
+
 
 	public void start() {
 		window.setVisible(true);
