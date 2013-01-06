@@ -22,6 +22,12 @@ public class App {
 	public Scene getScene() {
 		return scene;
 	}
+
+	public void setScene(Scene scene) {
+		this.scene = scene;
+	}
+	
+	
 	
 	
 
