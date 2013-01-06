@@ -51,6 +51,7 @@ public class GamePanel extends JPanel implements GraphicsManager {
         String maxFPSStr = "maxFPS: "+ (maxFPS > 1000? "1000+" : maxFPS);
 		g.drawString(renderTimeStr+", "+maxFPSStr, width - 165, height-20);
         g.drawString("position: ["+scene.getWIndowX()+","+scene.getWindowY()+"]", width - 165, height-4);
+        
     }
 
 	@Override
@@ -59,6 +60,21 @@ public class GamePanel extends JPanel implements GraphicsManager {
 		ImageImpl imageImpl = (ImageImpl) image;
 		BufferedImage bufferedImage = imageImpl.getBufferedImage();
 		g.drawImage(bufferedImage, imageStartX, imageStartY, null);
+		
+	}
+
+	@Override
+	public void drawLine(int x1, int y1, int x2, int y2, int rgba, Object platformGraphics) {
+		Graphics g = (Graphics) platformGraphics;
+		g.setColor(new Color(rgba, true));
+		g.drawLine(x1, y1, x2, y2);
+	}
+
+	@Override
+	public void fillOval(int x, int y, int width, int height, int rgba, Object platformGraphics) {
+		Graphics g = (Graphics) platformGraphics;
+		g.setColor(new Color(rgba, true));
+		g.fillOval(x, y, width, height);
 		
 	}
 }
