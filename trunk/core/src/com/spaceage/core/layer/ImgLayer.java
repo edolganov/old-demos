@@ -12,7 +12,7 @@ public class ImgLayer extends Layer {
 	ImgTilesPainter painter;
 	
 	public ImgLayer(String resourcePath) {
-		Image img = G.factory().createImage(resourcePath);
+		Image img = G.factory.createImage(resourcePath);
 		painter = new ImgTilesPainter(img);
 	}
 	

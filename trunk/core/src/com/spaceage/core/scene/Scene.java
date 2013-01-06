@@ -13,7 +13,7 @@ public class Scene {
 	private ScenePoint windowStartPoint;
 	
 	public Scene() {
-		this.w = new Window(G.initialWindow());
+		this.w = new Window(G.initialWindow);
 		windowStartPoint = new ScenePoint(w.x, w.y, 0, 0);
 	}
 	
