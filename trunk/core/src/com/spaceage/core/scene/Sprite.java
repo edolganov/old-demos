@@ -66,8 +66,8 @@ public class Sprite implements VisualObject {
 		if(G.showVelocityVector){
 			int width = painter.getWidth();
 			int height = painter.getHeight();
-			int vX1 = x + width/2;
-			int vY1 = y + height/2;
+			int vX1 = x + width/2 - w.x;
+			int vY1 = y + height/2 - w.y;
 			int vX2 = (vX1 + (int)startPoint.getVelocityX())*2;
 			int vY2 = (vY1 + (int)startPoint.getVelocityY())*2;
 			manager.drawLine(vX1, vY1, vX2, vY2, ColorUtil.RED, platformGraphics);

@@ -19,8 +19,8 @@ public class Level_01 {
 		SpritesContainer sprites = level.getSpriteContainer();
 		
 		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 40, 90);
-//		player.getStartPoint().setVelocity(2, -10);
-		player.getStartPoint().setVelocity(0, 0);
+		player.getStartPoint().setVelocity(4, -10);
+//		player.getStartPoint().setVelocity(0, 0);
 		
 		//sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 0);
 		//sprites.createSprite("/content/l01/sprite-ex-02-1.png", 600, 0);
@@ -30,7 +30,7 @@ public class Level_01 {
 		scene.add(sky);
 		scene.add(level);
 		
-		scene.setWindowVelocity(0, 0);
+		scene.setWindowVelocity(1, 0);
 	}
 
 	public Scene getScene() {

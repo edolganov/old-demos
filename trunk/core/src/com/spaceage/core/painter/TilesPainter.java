@@ -14,7 +14,7 @@ public abstract class TilesPainter {
 		this.model = model;
 	}
 
-	public void drawTiles(Window w, final GraphicsManager manager, final Object platformGraphics) {
+	public void drawTiles(final Window w, final GraphicsManager manager, final Object platformGraphics) {
 		if(model == null){
 			return;
 		}
@@ -29,7 +29,10 @@ public abstract class TilesPainter {
 					return;
 				}
 				
-				manager.draw(img, x, y, platformGraphics);
+				int winX = x - w.x;
+				int winY = y - w.y;
+				
+				manager.draw(img, winX, winY, platformGraphics);
 				
 			}
 		});
