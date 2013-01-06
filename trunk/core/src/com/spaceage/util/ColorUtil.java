@@ -2,8 +2,11 @@ package com.spaceage.util;
 
 public class ColorUtil {
 	
-	public static final int WHITE_COLOR = 0xFFFFFFFF;
-	public static final int EMPTY_COLOR = 0;
+	public static final int WHITE = 0xFFFFFFFF;
+	public static final int HIDE = 0;
+	
+	public static final int RED = 0xFFFF0000;
+	public static final int RED_50_ALPHA = 0x88FF0000;
 	
 	public static int clearAlpha(int rgba) {
 		return ((0 & 0xFF) << 24) | ((rgba & 0xFF) << 16) | ((rgba & 0xFF) << 8) | ((rgba & 0xFF) << 0);

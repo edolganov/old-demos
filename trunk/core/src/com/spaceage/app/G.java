@@ -23,6 +23,8 @@ public class G {
 	
 	static double maxAcceleraton = 30;
 	
+	static boolean showVelocityVector = true;
+	
 	
 
 	public static PlatformFactory factory() {
@@ -45,12 +47,16 @@ public class G {
 		return slowdownAccelerationX;
 	}
 	
-	public 	static double maxVelocity(){
+	public static double maxVelocity(){
 		return maxVelocity;
 	}
 	
-	public 	static double maxAcceleraton(){
+	public static double maxAcceleraton(){
 		return maxAcceleraton;
+	}
+	
+	public static boolean showVelocityVector() {
+		return showVelocityVector;
 	}
 	
 	

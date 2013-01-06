@@ -32,7 +32,7 @@ public class TilesLayer extends Layer {
 			for(int y=0; y<height; y++){
 				
 				int color = modelImg.getRGBA(x, y);
-				if(color == ColorUtil.WHITE_COLOR){
+				if(color == ColorUtil.WHITE){
 					tiles.setGround(x, y);
 				}
 			}
