@@ -25,32 +25,38 @@ public class Sprite implements VisualObject {
 		
 	}
 	
+	public String getId(){
+		return id;
+	}
+	
+	private ImgSinglePainter getCurPainter() {
+		if(painters.size() == 0){
+			return null;
+		}
+		//TODO animation
+		return painters.get(0);
+	}
+	
 	public boolean isVisible(Window w){
 		
-		if(Util.isEmpty(painters)){
+		ImgSinglePainter painter = getCurPainter();
+		if(painter == null){
 			return false;
 		}
 		
-		ImgSinglePainter painter = painters.get(0);
 		int x = startPoint.getX();
 		int y = startPoint.getY();
 		return painter.isVisible(x, y, w);
 		
 	}
 	
-	public String getId(){
-		return id;
-	}
-	
 	@Override
 	public void draw(Window w, GraphicsManager manager, Object platformGraphics) {
-		
-		if(Util.isEmpty(painters)){
-			return;
+		ImgSinglePainter painter = getCurPainter();
+		if(painter == null){
+			return ;
 		}
 		
-		//TODO animated sprite
-		ImgSinglePainter painter = painters.get(0);
 		int x = startPoint.getX();
 		int y = startPoint.getY();
 		painter.drawImage(x, y, w, manager, platformGraphics);
@@ -72,6 +78,23 @@ public class Sprite implements VisualObject {
 	
 	public ScenePoint getStartPoint(){
 		return startPoint;
+	}
+	
+	public int getWidth(){
+		ImgSinglePainter painter = getCurPainter();
+		if(painter == null){
+			return 0;
+		}
+		return painter.getWidth();
+		
+	}
+	
+	public int getHeight(){
+		ImgSinglePainter painter = getCurPainter();
+		if(painter == null){
+			return 0;
+		}
+		return painter.getHeight();
 	}
 	
 	

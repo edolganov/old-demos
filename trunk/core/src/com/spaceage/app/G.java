@@ -13,15 +13,15 @@ public class G {
 	static Window initialWindow;
 	
 	//world const
-	static double slowdownConst = 1; //no slowdown
+	static float slowdownConst = 1; //no slowdown
 	
-	static double gravityConst = 0.35;
+	static float gravityConst = 0.35f;
 	
-	static double slowdownAccelerationX = 0.01;
+	static float slowdownAccelerationX = 0.01f;
 	
-	static double maxVelocity = 30;
+	static float maxVelocity = 30;
 	
-	static double maxAcceleraton = 30;
+	static float maxAcceleraton = 30;
 	
 	static boolean showVelocityVector = true;
 	
@@ -31,7 +31,7 @@ public class G {
 		return factory;
 	}
 
-	public static double slowdownConst() {
+	public static float slowdownConst() {
 		return slowdownConst;
 	}
 
@@ -39,19 +39,19 @@ public class G {
 		return initialWindow;
 	}
 	
-	public static double gravityConst(){
+	public static float gravityConst(){
 		return gravityConst;
 	}
 	
-	public static double slowdownAccelerationX(){
+	public static float slowdownAccelerationX(){
 		return slowdownAccelerationX;
 	}
 	
-	public static double maxVelocity(){
+	public static float maxVelocity(){
 		return maxVelocity;
 	}
 	
-	public static double maxAcceleraton(){
+	public static float maxAcceleraton(){
 		return maxAcceleraton;
 	}
 	

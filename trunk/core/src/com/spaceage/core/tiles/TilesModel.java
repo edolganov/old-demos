@@ -1,6 +1,9 @@
 package com.spaceage.core.tiles;
 
+import java.util.ArrayList;
+
 import com.spaceage.core.basic.Rectangle;
+import com.spaceage.core.tiles.FoundedTiles.TileInfo;
 
 public class TilesModel {
 	
@@ -28,6 +31,22 @@ public class TilesModel {
 
 	public void setGround(int modelX, int modelY) {
 		matrix[modelX][modelY] = GROUND;
+	}
+	
+	public FoundedTiles findTiles(Rectangle rec){
+		
+		final ArrayList<TileInfo> tiles = new ArrayList<TileInfo>();
+		findTiles(rec, new FindTilesListener() {
+			
+			@Override
+			public void onFoundTile(int x, int y, int width, int height, byte state) {
+				tiles.add(new TileInfo(x, y, state));
+			}
+		});
+		
+		return new FoundedTiles(tiles, tileWidth, tileHeight);
+		
+		
 	}
 	
 	
@@ -64,7 +83,9 @@ public class TilesModel {
 				tileY = startY - localY;
 				
 				byte state = matrix[modelX][modelY];
-				listener.onFoundTile(tileX, tileY, tileWidth, tileHeight, state);
+				if(state != EMPTY | listener.processEmpty){
+					listener.onFoundTile(tileX, tileY, tileWidth, tileHeight, state);
+				}
 				
 				startY = startY + tileHeight;
 				modelY++;
@@ -101,5 +122,15 @@ public class TilesModel {
 		}
 		return recHeight + y;
 	}
+
+	public int getTileWidth() {
+		return tileWidth;
+	}
+
+	public int getTileHeight() {
+		return tileHeight;
+	}
+	
+	
 
 }
