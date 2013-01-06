@@ -69,22 +69,15 @@ public class TilesModel {
 		int startY;
 		int modelY;
 		
-
-		int tileX;
-		int tileY;
 		while(startX <= endX && modelX < matrixWidth){
-			
-			tileX = startX - localX;
 			
 			startY = tileHeight * stepsY;
 			modelY = stepsY;
 			while(startY <= endY && modelY < matrixHeight){
 				
-				tileY = startY - localY;
-				
 				byte state = matrix[modelX][modelY];
 				if(state != EMPTY | listener.processEmpty){
-					listener.onFoundTile(tileX, tileY, tileWidth, tileHeight, state);
+					listener.onFoundTile(startX, startY, tileWidth, tileHeight, state);
 				}
 				
 				startY = startY + tileHeight;

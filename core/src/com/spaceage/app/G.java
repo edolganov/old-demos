@@ -13,7 +13,7 @@ public class G {
 	public static Window initialWindow;
 	
 	//world const
-	public static float slowdownConst = 0.1f; //no slowdown
+	public static float slowdownConst = 0.5f; //no slowdown
 	
 	public static float gravityConst = 0.35f;
 	
