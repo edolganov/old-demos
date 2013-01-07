@@ -2,8 +2,8 @@ package com.spaceage.swing.test;
 
 import javax.swing.SwingUtilities;
 
-import com.spaceage.app.G;
 import com.spaceage.app.painter.Level1Painter;
+import com.spaceage.core.G;
 import com.spaceage.core.layer.TilesLayer;
 import com.spaceage.core.scene.Scene;
 import com.spaceage.core.scene.Sprite;

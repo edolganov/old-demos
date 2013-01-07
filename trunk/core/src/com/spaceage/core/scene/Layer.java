@@ -2,7 +2,7 @@ package com.spaceage.core.scene;
 
 import java.util.List;
 
-import com.spaceage.app.G;
+import com.spaceage.core.G;
 import com.spaceage.core.basic.Rectangle;
 import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.GraphicsManager;

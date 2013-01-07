@@ -1,6 +1,6 @@
 package com.spaceage.core.scene;
 
-import com.spaceage.app.G;
+import com.spaceage.core.G;
 
 public class ScenePoint {
 	
