@@ -11,10 +11,12 @@ public class ScenePoint {
 	//velocity
 	private float dX;
 	private float dY;
+	private float maxVelocity = G.maxVelocity;
 	
 	//acceleration
 	private float ddX;
 	private float ddY;
+	private float maxAcceleration = G.maxAcceleration;
 	
 	
 	public ScenePoint(float x, float y, float dX, float dY) {
@@ -39,7 +41,15 @@ public class ScenePoint {
 	}
 	
 	public void appendVelocity(float dX, float dY) {
+		appendVelocityX(dX);
+		appendVelocityY(dY);
+	}
+	
+	public void appendVelocityX(float dX) {
 		this.dX += dX * G.slowdownConst;
+	}
+	
+	public void appendVelocityY(float dY) {
 		this.dY += dY * G.slowdownConst;
 	}
 	
@@ -69,10 +79,10 @@ public class ScenePoint {
 	
 	public void move() {
 		
-		limitVelocityAndAcceleration();
-		
 		dX += ddX;
 		dY += ddY;
+		
+		limitVelocityAndAcceleration();
 		
 		x += dX;
 		y += dY;
@@ -81,32 +91,32 @@ public class ScenePoint {
 	
 	private void limitVelocityAndAcceleration() {
 		
-		if(ddX > G.maxAcceleraton){
-			ddX = G.maxAcceleraton;
+		if(ddX > maxAcceleration){
+			ddX = maxAcceleration;
 		}
-		else if(ddX < -G.maxAcceleraton){
-			ddX = -G.maxAcceleraton;
-		}
-		
-		if(ddY > G.maxAcceleraton){
-			ddY = G.maxAcceleraton;
-		}
-		else if(ddY < -G.maxAcceleraton){
-			ddY = -G.maxAcceleraton;
+		else if(ddX < -maxAcceleration){
+			ddX = -maxAcceleration;
 		}
 		
-		if(dX > G.maxVelocity){
-			dX = G.maxVelocity;
+		if(ddY > maxAcceleration){
+			ddY = maxAcceleration;
 		}
-		else if(dX < -G.maxVelocity){
-			dX = -G.maxVelocity;
+		else if(ddY < -maxAcceleration){
+			ddY = -maxAcceleration;
 		}
 		
-		if(dY > G.maxVelocity){
-			dY = G.maxVelocity;
+		if(dX > maxVelocity){
+			dX = maxVelocity;
 		}
-		else if(dY < -G.maxVelocity){
-			dY = -G.maxVelocity;
+		else if(dX < -maxVelocity){
+			dX = -maxVelocity;
+		}
+		
+		if(dY > maxVelocity){
+			dY = maxVelocity;
+		}
+		else if(dY < -maxVelocity){
+			dY = -maxVelocity;
 		}
 	}
 
@@ -141,6 +151,16 @@ public class ScenePoint {
 	public float getAccelerationY(){
 		return ddY;
 	}
+
+	public void setMaxVelocity(float maxVelocity) {
+		this.maxVelocity = maxVelocity;
+	}
+
+	public void setMaxAcceleration(float maxAcceleration) {
+		this.maxAcceleration = maxAcceleration;
+	}
+	
+	
 	
 	
 

@@ -51,19 +51,13 @@ public class SwingApp implements ActionListener{
 			public void keyTyped(KeyEvent e) {}
 			
 			@Override
-			public void keyReleased(KeyEvent e) {}
+			public void keyReleased(KeyEvent e) {
+				app.onKeyReleased(e.getKeyCode());
+			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				int keyCode = e.getKeyCode();
-				//<- 37, -> 39, up - 38, down - 40
-				if(keyCode == 37){
-					
-				}
-				else if(keyCode == 39){
-					
-				}
-				
+				app.onKeyPressed(e.getKeyCode());
 			}
 		});
 	}

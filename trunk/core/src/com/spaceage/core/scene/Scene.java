@@ -11,6 +11,7 @@ public class Scene {
 	private ArrayList<Layer> layers = new ArrayList<Layer>();
 	private Window w;
 	private ScenePoint windowStartPoint;
+	private ArrayList<SceneListener> listeners = new ArrayList<SceneListener>();
 	
 	public Scene() {
 		this.w = new Window(G.initialWindow);
@@ -22,6 +23,10 @@ public class Scene {
 		layers.add(layer);
 	}
 	
+	public void addListener(SceneListener listener){
+		listeners.add(listener);
+	}
+	
 	public void draw(GraphicsManager manager, Object platformGraphics) {
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
@@ -31,6 +36,7 @@ public class Scene {
 	}
 
 	public void updateScene() {
+		beforeUpdate();
 		updateWindowPosition();
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
@@ -38,6 +44,13 @@ public class Scene {
 		}
 	}
 	
+	private void beforeUpdate() {
+		for (int i = 0; i < listeners.size(); i++) {
+			listeners.get(i).beforeSceneUpdate();
+		}
+	}
+
+
 	private void updateWindowPosition() {
 		windowStartPoint.move();
 		w.x = windowStartPoint.getX();
