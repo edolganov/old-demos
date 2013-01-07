@@ -6,16 +6,25 @@ import com.spaceage.core.scene.Scene;
 
 public class App {
 	
-	Level_01 level;
 	Scene scene;
 	
 	public App(PlatformFactory factory, Window window) {
+		this(factory, window, null, true);
+	}
+	
+	
+	public App(PlatformFactory factory, Window window, Scene scene, boolean createDefaultScene) {
 		
 		G.factory = factory;
 		G.initialWindow = new Window(window);
 		
-		level = new Level_01();
-		scene = level.getScene();
+		if(scene == null && createDefaultScene){
+			Level_01 level = new Level_01();
+			this.scene = level.getScene();
+		} else {
+			this.scene = scene;
+		}
+
 		
 	}
 
