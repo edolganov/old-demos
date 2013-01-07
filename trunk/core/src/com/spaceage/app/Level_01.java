@@ -18,8 +18,8 @@ public class Level_01 {
 		TilesLayer level = new TilesLayer(0, 0, new Level1Painter(), "/content/l01/level-1-model.png", 10, 10);
 		SpritesContainer sprites = level.getSpriteContainer();
 		
-		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 40, 90);
-		player.getStartPoint().setVelocity(4, -10);
+		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 40, 300);
+		//player.getStartPoint().setVelocity(4, -10);
 //		player.getStartPoint().setVelocity(0, 0);
 		
 		//sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 0);
