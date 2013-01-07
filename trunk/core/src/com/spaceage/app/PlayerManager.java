@@ -13,11 +13,19 @@ import com.spaceage.core.scene.SpriteListener;
 public class PlayerManager implements SceneListener, SpriteListener {
 	
 	private static final float PLAYER_APPEND_DX_VAL = 1f;
-	private static final int MAX_DY = 8;
-	private static final int MAX_DX = 4;
+	private static final int WALK_DX = 4;
+	private static final int JUMP_DY = 8;
 	
 	KeyManager keymanager = G.keyManager;
 	ActionCodes codes = G.actionCodes;
+	
+	int winWidth = G.initialWindow.width;
+	int winRightEdge = (int)(winWidth * 0.8);
+	int winLeftEdge = (int)(winWidth * 0.2);
+	
+	int winHeigth = G.initialWindow.height;
+	int winUpEdge = (int)(winHeigth * 0.2);
+	int winDownEdge = (int)(winHeigth * 0.8);
 	
 	Scene scene;
 	Sprite player;
@@ -34,8 +42,7 @@ public class PlayerManager implements SceneListener, SpriteListener {
 		player.addListener(this);
 		
 		ScenePoint playerPoint = player.getStartPoint();
-		playerPoint.setMaxVelocityX(MAX_DX);
-		playerPoint.setMaxVelocityY(MAX_DY);
+		playerPoint.setMaxVelocityX(WALK_DX);
 		
 	}
 	
@@ -64,7 +71,7 @@ public class PlayerManager implements SceneListener, SpriteListener {
 		//jump
 		if(keymanager.getState(codes.jump()) == KeyState.PRESSED){
 			if(canJump){
-				playerPoint.setVelocityY(-MAX_DY);
+				playerPoint.setVelocityY(-JUMP_DY);
 			}
 		}
 		
@@ -74,6 +81,29 @@ public class PlayerManager implements SceneListener, SpriteListener {
 
 	@Override
 	public void afterSceneUpdate() {
+		
+		ScenePoint playerPoint = player.getStartPoint();
+		ScenePoint windowPoint = scene.getWindowStartPoint();
+		
+		int winX = windowPoint.getX();
+		int localX = playerPoint.getX() - winX;
+		int velocityX = Math.abs((int)playerPoint.getVelocityX());
+		if(localX >= winRightEdge){
+			windowPoint.setX(winX+velocityX);
+		}
+		else if(localX <= winLeftEdge && winX > 0){
+			windowPoint.setX(winX-velocityX);
+		}
+		
+//		int winY = windowPoint.getY();
+//		int localY = playerPoint.getY() - winY;
+//		int velocityY = Math.abs((int)playerPoint.getVelocityY());
+//		if(localY >= winDownEdge && winY <= 0){
+//			windowPoint.setY(winY+velocityY);
+//		} else if(localY <= winUpEdge ){
+//			windowPoint.setY(winY-velocityY);
+//		}
+		
 		
 	}
 

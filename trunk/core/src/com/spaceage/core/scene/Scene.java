@@ -60,17 +60,16 @@ public class Scene {
 			listeners.get(i).afterSceneUpdate();
 		}
 	}
+	
+	public ScenePoint getWindowStartPoint(){
+		return windowStartPoint;
+	}
 
 
 	private void updateWindowPosition() {
 		windowStartPoint.move();
 		w.x = windowStartPoint.getX();
 		w.y = windowStartPoint.getY();
-	}
-
-
-	public void setWindowVelocity(float dX, float dY){
-		windowStartPoint.setVelocity(dX, dY);
 	}
 	
 	public int getWIndowX(){

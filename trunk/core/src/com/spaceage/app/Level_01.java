@@ -25,9 +25,6 @@ public class Level_01 {
 		scene.add(level);
 		
 		new PlayerManager(scene, player);
-
-		
-		//scene.setWindowVelocity(0, 0);
 	}
 
 	public Scene getScene() {
