@@ -12,6 +12,7 @@ import javax.swing.Timer;
 
 import com.spaceage.app.App;
 import com.spaceage.core.basic.Window;
+import com.spaceage.core.scene.Scene;
 import com.spaceage.swing.platform.PlatformFactoryImpl;
 
 public class SwingApp implements ActionListener{
@@ -22,20 +23,14 @@ public class SwingApp implements ActionListener{
     Timer timer = new Timer(20, this);
     
     public SwingApp() {
+    	this(null, true);
+    }
+    
+    public SwingApp(Scene scene, boolean createDefaultScene) {
+    	
 		int width = 640;
 		int height = 480;
-		App app = new App(new PlatformFactoryImpl(), new Window(0, 0, width, height));
-		init(app, width, height);
-	}
-	
-	
-	public SwingApp(App app, int width, int height) {
-		init(app, width, height);
-	}
-
-	private void init(App app, int width, int height) {
-
-		this.app = app;
+		this.app = new App(new PlatformFactoryImpl(), new Window(0, 0, width, height), scene, createDefaultScene);
 		
 		window = new JFrame("space-age");
 		window.setIgnoreRepaint(true);
@@ -70,7 +65,10 @@ public class SwingApp implements ActionListener{
 			}
 		});
 	}
-
+    
+	public App getApp() {
+		return app;
+	}
 
 	public void start() {
 		window.setVisible(true);
