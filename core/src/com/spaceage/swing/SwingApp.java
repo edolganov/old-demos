@@ -57,6 +57,7 @@ public class SwingApp implements ActionListener{
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
+				//System.out.println(e.getKeyCode());
 				app.onKeyPressed(e.getKeyCode());
 			}
 		});

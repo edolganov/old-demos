@@ -33,7 +33,8 @@ public class Level_01 implements SceneListener {
 		
 		player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 40, 300);
 		ScenePoint playerPoint = player.getStartPoint();
-		playerPoint.setMaxVelocity(4);
+		playerPoint.setMaxVelocityX(4);
+		playerPoint.setMaxVelocityY(4);
 		
 		
 		scene = new Scene();
@@ -54,14 +55,15 @@ public class Level_01 implements SceneListener {
 		
 		ScenePoint playerPoint = player.getStartPoint();
 		
+		//left-right
 		velocityXSet = false;
 		
-		if(keymanager.getState(codes.rightKey()) == KeyState.PRESSED){
+		if(keymanager.getState(codes.goRight()) == KeyState.PRESSED){
 			playerPoint.appendVelocityX(PLAYER_APPEND_DX_VAL);
 			velocityXSet = true;
 		}
 		
-		if(keymanager.getState(codes.leftKey()) == KeyState.PRESSED){
+		if(keymanager.getState(codes.goLeft()) == KeyState.PRESSED){
 			playerPoint.appendVelocityX(-PLAYER_APPEND_DX_VAL);
 			velocityXSet = true;
 		}
@@ -69,6 +71,17 @@ public class Level_01 implements SceneListener {
 		if( ! velocityXSet){
 			playerPoint.setVelocityX(0);
 		}
+		
+		//jump
+		if(keymanager.getState(codes.jump()) == KeyState.PRESSED){
+			float curVelocityY = playerPoint.getVelocityY();
+			if(curVelocityY >= 0){
+				playerPoint.setVelocityY(-4);
+			}
+		}
+		
+		
+		
 	}
 
 	@Override
