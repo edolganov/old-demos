@@ -36,17 +36,28 @@ public class Scene {
 	}
 
 	public void updateScene() {
+		
 		beforeUpdate();
+		
 		updateWindowPosition();
 		for(int i=0; i < layers.size(); i++){
 			Layer layer = layers.get(i);
 			layer.updateState(w);
 		}
+		
+		afterUpdate();
 	}
-	
+
+
 	private void beforeUpdate() {
 		for (int i = 0; i < listeners.size(); i++) {
 			listeners.get(i).beforeSceneUpdate();
+		}
+	}
+	
+	private void afterUpdate() {
+		for (int i = 0; i < listeners.size(); i++) {
+			listeners.get(i).afterSceneUpdate();
 		}
 	}
 
