@@ -2,10 +2,10 @@ package com.spaceage.core.platform;
 
 public interface ActionCodes {
 	
-	int leftKey();
+	int goLeft();
 	
-	int rightKey();
+	int goRight();
 	
-	int space();
+	int jump();
 
 }
