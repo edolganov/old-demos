@@ -96,7 +96,7 @@ public abstract class Layer implements VisualObject {
 			FoundedTiles tilesX = tiles.findTiles(new Rectangle(fromX, oldY, recWidth, height));
 			if( ! tilesX.isEmpty()){
 				TileInfo firstTile = tilesX.findMinByX();
-				startPoint.setX(firstTile.x - width);
+				startPoint.setX(firstTile.x - width - 1);
 				startPoint.setVelocityX(0);
 			}
 		} else {
@@ -123,7 +123,7 @@ public abstract class Layer implements VisualObject {
 			FoundedTiles tilesY = tiles.findTiles(new Rectangle(updatedX, fromY, width, recHeight));
 			if( ! tilesY.isEmpty()){
 				TileInfo firstTile = tilesY.findMinByY();
-				startPoint.setY(firstTile.y - height);
+				startPoint.setY(firstTile.y - height - 1);
 				startPoint.setVelocityY(0);
 			}
 		} else {
