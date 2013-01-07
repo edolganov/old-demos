@@ -30,7 +30,7 @@ public class Level_01 {
 		scene.add(sky);
 		scene.add(level);
 		
-		scene.setWindowVelocity(1, 0);
+		scene.setWindowVelocity(0, 0);
 	}
 
 	public Scene getScene() {
