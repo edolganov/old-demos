@@ -19,7 +19,7 @@ public class Level_01 {
 		SpritesContainer sprites = level.getSpriteContainer();
 		
 		Sprite player = sprites.createSprite("/content/l01/sprite-ex-01-1.png", 40, 300);
-		//player.getStartPoint().setVelocity(4, -10);
+		player.getStartPoint().setVelocity(2, -10);
 //		player.getStartPoint().setVelocity(0, 0);
 		
 		//sprites.createSprite("/content/l01/sprite-ex-02-1.png", 30, 0);
