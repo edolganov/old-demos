@@ -24,6 +24,8 @@ public class G {
 	public static float maxAcceleraton = 30;
 	
 	public static boolean showVelocityVector = true;
+	
+	public static boolean showSpriteBounds = true;
 
 	
 	

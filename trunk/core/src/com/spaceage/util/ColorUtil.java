@@ -8,6 +8,9 @@ public class ColorUtil {
 	public static final int RED = 0xFFFF0000;
 	public static final int RED_50_ALPHA = 0x88FF0000;
 	
+	public static final int GREEN = 0xFF00FF00;
+	public static final int GREEN_50_ALPHA = 0x8800FF00;
+	
 	public static int clearAlpha(int rgba) {
 		return ((0 & 0xFF) << 24) | ((rgba & 0xFF) << 16) | ((rgba & 0xFF) << 8) | ((rgba & 0xFF) << 0);
 	}

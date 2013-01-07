@@ -62,14 +62,24 @@ public class Sprite implements VisualObject {
 		painter.drawImage(x, y, w, manager, platformGraphics);
 		
 		
+		if(G.showSpriteBounds){
+			int startX = x - w.x;
+			int startY = y - w.y;
+			int width = painter.getWidth();
+			int height = painter.getHeight();
+			manager.drawLine(startX, startY, startX+width, startY, ColorUtil.GREEN, platformGraphics);
+			manager.drawLine(startX+width, startY, startX+width, startY+height, ColorUtil.GREEN, platformGraphics);
+			manager.drawLine(startX+width, startY+height, startX, startY+height, ColorUtil.GREEN, platformGraphics);
+			manager.drawLine(startX, startY+height, startX, startY, ColorUtil.GREEN, platformGraphics);
+		}
 		
 		if(G.showVelocityVector){
 			int width = painter.getWidth();
 			int height = painter.getHeight();
 			int vX1 = x + width/2 - w.x;
 			int vY1 = y + height/2 - w.y;
-			int vX2 = (vX1 + (int)startPoint.getVelocityX())*2;
-			int vY2 = (vY1 + (int)startPoint.getVelocityY())*2;
+			int vX2 = (vX1 + ((int)startPoint.getVelocityX())*50);
+			int vY2 = (vY1 + ((int)startPoint.getVelocityY())*50);
 			manager.drawLine(vX1, vY1, vX2, vY2, ColorUtil.RED, platformGraphics);
 			manager.fillOval(vX2, vY2, 5, 5, ColorUtil.RED, platformGraphics);
 		}
