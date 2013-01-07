@@ -1,4 +1,4 @@
-package com.spaceage.app;
+package com.spaceage.core;
 
 import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.PlatformFactory;
@@ -13,7 +13,7 @@ public class G {
 	public static Window initialWindow;
 	
 	//world const
-	public static float slowdownConst = 0.5f; //no slowdown
+	public static float slowdownConst = 1f; //1 = no slowdown
 	
 	public static float gravityConst = 0.35f;
 	

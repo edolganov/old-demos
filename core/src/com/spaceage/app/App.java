@@ -1,5 +1,6 @@
 package com.spaceage.app;
 
+import com.spaceage.core.G;
 import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.PlatformFactory;
 import com.spaceage.core.scene.Scene;

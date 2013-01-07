@@ -1,6 +1,6 @@
 package com.spaceage.core.layer;
 
-import com.spaceage.app.G;
+import com.spaceage.core.G;
 import com.spaceage.core.basic.Window;
 import com.spaceage.core.painter.TilesPainter;
 import com.spaceage.core.platform.GraphicsManager;

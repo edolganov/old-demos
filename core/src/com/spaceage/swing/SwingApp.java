@@ -58,8 +58,10 @@ public class SwingApp implements ActionListener{
 				int keyCode = e.getKeyCode();
 				//<- 37, -> 39, up - 38, down - 40
 				if(keyCode == 37){
+					
 				}
 				else if(keyCode == 39){
+					
 				}
 				
 			}

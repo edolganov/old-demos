@@ -1,6 +1,6 @@
 package com.spaceage.app.painter;
 
-import com.spaceage.app.G;
+import com.spaceage.core.G;
 import com.spaceage.core.painter.TilesPainter;
 import com.spaceage.core.platform.Image;
 import com.spaceage.core.tiles.TilesModel;
