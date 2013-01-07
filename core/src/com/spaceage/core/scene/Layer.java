@@ -6,6 +6,7 @@ import com.spaceage.core.G;
 import com.spaceage.core.basic.Rectangle;
 import com.spaceage.core.basic.Window;
 import com.spaceage.core.platform.GraphicsManager;
+import com.spaceage.core.scene.SpriteListener.Direciton;
 import com.spaceage.core.tiles.FoundedTiles;
 import com.spaceage.core.tiles.FoundedTiles.TileInfo;
 import com.spaceage.core.tiles.TilesModel;
@@ -86,6 +87,7 @@ public abstract class Layer implements VisualObject {
 		int height = sprite.getHeight();
 		
 		//check x
+		SpriteListener.Direciton collisionDirectionX = null;
 		int x = startPoint.getX();
 		float velocityX = startPoint.getVelocityX();
 		if(velocityX > 0){
@@ -98,6 +100,7 @@ public abstract class Layer implements VisualObject {
 				TileInfo firstTile = tilesX.findMinByX();
 				startPoint.setX(firstTile.x - width - 1);
 				startPoint.setVelocityX(0);
+				collisionDirectionX = Direciton.RIGHT;
 			}
 		} else {
 			int fromX = MathUtil.getMinVal(oldX, x);
@@ -107,10 +110,19 @@ public abstract class Layer implements VisualObject {
 				TileInfo lastTile =  tilesX.findMaxByX();
 				startPoint.setX(lastTile.x + tilesX.tileWidth + 1);
 				startPoint.setVelocityX(0);
+				collisionDirectionX = Direciton.LEFT;
+			}
+		}
+		
+		if(collisionDirectionX != null){
+			List<SpriteListener> listeners = sprite.getListeners();
+			for (int i = 0; i < listeners.size(); i++) {
+				listeners.get(i).onTileCollision(collisionDirectionX);
 			}
 		}
 		
 		//check y
+		SpriteListener.Direciton collisionDirectionY = null;
 		int updatedX = startPoint.getX();
 		int y = startPoint.getY();
 		float velocityY = startPoint.getVelocityY();
@@ -125,6 +137,7 @@ public abstract class Layer implements VisualObject {
 				TileInfo firstTile = tilesY.findMinByY();
 				startPoint.setY(firstTile.y - height - 1);
 				startPoint.setVelocityY(0);
+				collisionDirectionY = Direciton.DOWN;
 			}
 		} else {
 			int fromY = MathUtil.getMinVal(oldY, y);
@@ -134,6 +147,21 @@ public abstract class Layer implements VisualObject {
 				TileInfo lastTile = tilesY.findMaxByY();
 				startPoint.setY(lastTile.y + tilesY.tileHeight + 1);
 				startPoint.setVelocityY(0);
+				collisionDirectionY = Direciton.UP;
+			}
+		}
+		
+		if(collisionDirectionY != null){
+			List<SpriteListener> listeners = sprite.getListeners();
+			for (int i = 0; i < listeners.size(); i++) {
+				listeners.get(i).onTileCollision(collisionDirectionY);
+			}
+		}
+		
+		if(collisionDirectionX == null && collisionDirectionY == null){
+			List<SpriteListener> listeners = sprite.getListeners();
+			for (int i = 0; i < listeners.size(); i++) {
+				listeners.get(i).onNoTileCollision();
 			}
 		}
 

@@ -1,6 +1,8 @@
 package com.spaceage.core.scene;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.spaceage.core.G;
 import com.spaceage.core.basic.Window;
@@ -15,7 +17,7 @@ public class Sprite implements VisualObject {
 	private String id = Util.randomUUID();;
 	private ArrayList<ImgSinglePainter> painters = new ArrayList<ImgSinglePainter>();
 	private ScenePoint startPoint;
-	
+	private ArrayList<SpriteListener> listeners;
 	
 	public Sprite(String resourcePath, int x, int y){
 		startPoint = new ScenePoint(x, y, 0, 0);
@@ -23,6 +25,13 @@ public class Sprite implements VisualObject {
 		Image img = G.factory.createImage(resourcePath);
 		painters.add(new ImgSinglePainter(img));
 		
+	}
+	
+	public void addListener(SpriteListener listener){
+		if(listeners == null){
+			listeners = new ArrayList<SpriteListener>();
+		}
+		listeners.add(listener);
 	}
 	
 	public String getId(){
@@ -106,6 +115,15 @@ public class Sprite implements VisualObject {
 		}
 		return painter.getHeight();
 	}
+
+	public List<SpriteListener> getListeners() {
+		if(listeners == null){
+			return Collections.emptyList();
+		}
+		return listeners;
+	}
+	
+	
 	
 	
 

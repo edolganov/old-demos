@@ -30,9 +30,9 @@ public class G {
 	
 	public static float maxAcceleration = 30;
 	
-	public static boolean showVelocityVector = true;
+	public static boolean showVelocityVector = false;
 	
-	public static boolean showSpriteBounds = true;
+	public static boolean showSpriteBounds = false;
 	
 
 	
