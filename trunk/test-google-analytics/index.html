@@ -20,9 +20,23 @@
 
 
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-38153353-1']);
-  _gaq.push(['_trackPageview']);
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-38153353-1']);
+	_gaq.push(['_trackPageview']);
+
+	//test
+	_gaq.push(['_setCustomVar', 1, 'payment_systems', 'SOME-VAL', 3]);
+
+	//other
+	_gaq.push(['_trackEvent', 'payment', 'action', 'click']);
+	_gaq.push(['_trackPageview', '/_pay']);
+	
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_addTrans','1232363652',0,17092,0,'','','','']);
+	_gaq.push(['_addItem', '1232363652', '1232363652-1', 'KZN-MOW-KZN', 'Avia', 9296.00, 'ADULT']);
+	_gaq.push(['_addItem', '1232363652', '1232363652-2', 'KZN-MOW-KZN', 'Avia', 7796.00, 'CHILDREN']);
+	_gaq.push(['_trackTrans']);
+	
 
 </script>
 
