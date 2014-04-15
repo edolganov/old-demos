@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<script type="text/javascript" src="test.jquery.min.js"></script>
+</head>
+<body>
+	
+	<a href="javascript:" onclick="if(window.oChat) {window.oChat.show(); window.oChat.show();}">Open chat</a>
+
+	
+	
+	
+	<script>
+		(function() {
+
+			window.oChatProps = window.oChatProps? window.oChatProps : {};
+
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.async = true;
+			var srcVal = "";
+			if('https:' == document.location.protocol) srcVal = "https://127.0.0.1:10643";
+			else srcVal = "http://127.0.0.1:10280";
+			s.src = srcVal + "/chat/app.js"
+			var o = document.getElementsByTagName('script')[0];
+			o.parentNode.insertBefore(s, o);
+		})();
+
+		oChatProps.id = "123";
+		
+		oChatProps.labels = {};
+		oChatProps.labels["app.Close"]="Закрыть";
+		oChatProps.labels["app.ConnectingToServer"]="Соединение с сервером...";
+		oChatProps.labels["app.ConnectError"]="Ошибка соединения";
+		oChatProps.labels["app.TryConnectAgain"]="Повторить";
+		oChatProps.labels["app.Send"]="Отправить";
+		oChatProps.labels["app.SendLoading"]="Отправка...";
+		oChatProps.labels["app.SendError"]="Не удалось отправить";
+		
+		oChatProps.labels["err.och.exception.chat.NoAvailableOperatorException"]="Нет доступных операторов";
+		
+		oChatProps.labels[""]="";
+	</script>
+
+</body>
+
+</html>
